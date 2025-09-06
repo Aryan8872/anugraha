@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+
+@theme {
+  --color-green-primary: #b9e697;
+  --color-primary-bg: #F2F2F2;
+  --color-grey-primary: #262626;
+  --color-image-bg-grey: #5e5f5a;
+  --color-darkgreen-secondary: #49633F;
+  --color-image-bg-color: #918F82;
+  --font-dew-semibold: 'Dew-semibold', sans-serif;
+  --font-dew-regular: 'Dew-regular', sans-serif;
+  --font-dew-bold: 'Dew-bold', sans-serif;
+  --font-dew-expanded-bold: 'Dew-expanded-bold', sans-serif;
+  --font-dew-expanded-semibold: 'Dew-expanded-semibold', sans-serif;
+  --font-dew-expanded-regular: 'Dew-expanded-regular', sans-serif;
+  --font-dew-expanded-italic: 'Dew-expanded-italic', sans-serif;
+}
+
+@font-face {
+  font-family: 'Dew-semibold';
+  src: url('/fonts/RFDewi-Semibold.woff')format('woff');
+}
+
+@font-face {
+  font-family: 'Dew-expanded-bold';
+  src: url('/public/fonts/RFDewiExpanded-Bold.woff')format('woff');
+}
+
+@font-face {
+  font-family: 'Dew-expanded-semibold';
+  src: url('/public/fonts/RFDewiExpanded-Semibold.woff')format('woff');
+}
+
+@font-face {
+  font-family: 'Dew-expanded-regular';
+  src: url('/public/fonts/RFDewiExpanded-Regular.woff')format('woff');
+}
+
+@font-face {
+  font-family: 'Dew-expanded-italic';
+  src: url('/public/fonts/RFDewiExpanded-Italic.woff')format('woff');
+}
+
+@font-face {
+  font-family: 'Dew-regular';
+  src: url('/fonts/RFDewi-Regular.woff')format('woff')format('woff');
+}
+
+@font-face {
+  font-family: 'Dew-bold';
+  src: url('/fonts/RFDewi-Bold.woff')format('woff');
+}
+
+
+.swiper-pagination-bullet {
+  @apply w-2 rounded-4xl transition-all duration-300
+}
+
+.swiper-pagination-bullet-active {
+ @apply w-6 rounded-4xl transition-all duration-300
+}
