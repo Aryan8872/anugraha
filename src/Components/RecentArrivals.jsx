@@ -68,7 +68,7 @@ const RecentArrivals = () => {
                     spaceBetween={16}
                     slidesPerGroup={1}
                     speed={1200}
-                    loop={true}               
+                    loop={true}
 
                     grabCursor={true}
                     pagination={{
@@ -99,6 +99,11 @@ const RecentArrivals = () => {
                             slidesPerView: 2,
                             spaceBetween: 16,
                             slidesPerGroup: 2
+                        },
+                        240: {
+                            slidesPerView: 1,
+                            spaceBetween: 16,
+                            slidesPerGroup: 1
                         }
                     }}
                 >
