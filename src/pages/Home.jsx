@@ -1,5 +1,4 @@
 import BottomOffer from "../Components/BottomOfferSection"
-import CategorySection from "../Components/CategorySection"
 import HeroSwiper from "../Components/HeroSwiper"
 import LandingHero from "../Components/LandingHero"
 import RecentArrivals from "../Components/RecentArrivals"
@@ -12,7 +11,6 @@ const Home = () => {
             <HeroSwiper />
 
             <div className="flex flex-col bg-white shadow-md rounded-4xl mt-8 mb-8 gap-10">
-                <CategorySection/>
                 <RecentArrivals />
                 <Testimonials />
             </div>

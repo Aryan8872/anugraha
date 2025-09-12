@@ -40,7 +40,7 @@ const LandingHero = () => {
         trigger: containerRef.current,
         start: "top top",
         end: "+=1000", // slower animation (increased distance)
-        scrub: 0.7, // smoother + slower reaction
+        scrub: 2.5, // smoother + slower reaction
         pin: true,
         pinSpacing: true,
         // markers: true,
@@ -56,90 +56,112 @@ const LandingHero = () => {
       )
       .to(
         categoryContainerRef.current,
-        { width: "100%", marginLeft: "0px", duration: 1.2, ease: E.out },
-        "phase1"
+        { width: "100%", marginLeft: "0px", duration: 0.4, ease: E.out },
+        "<"
       )
       .to(
         categorySlide1.current,
-        { flex: 0.5, duration: 1.2, ease: E.inOut },
-        "phase1"
-      )
-      .to(
-        categorySlide2.current,
-        { flex: 0.5, duration: 1.2, ease: E.inOut },
-        "phase1"
-      )
-      .to(
-        [categorySlide3.current, categorySlide4.current],
-        { flex: 0, duration: 1.2, ease: E.inOut },
-        "phase1"
+        { flex: 0.7, duration: 0.3, ease: E.inOut },
+        "<"
       )
       .to(
         text1Ref.current,
         { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
+        "<"
+      )
+
+      .to(
+        categorySlide1.current,
+        { flex: 0, duration: 1, ease: E.inOut },
         "phase1+=0.5"
       )
       .to(
         text2Ref.current,
         { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-        "phase1+=0.8"
-      );
-
-    // --- PHASE 2 ---
-    tl.addLabel("phase2", "+=0.3")
-      .to(
-        categorySlide1.current,
-        { flex: 0, duration: 1, ease: E.inOut },
-        "phase2"
-      )
-      .to(
-        text1Ref.current,
-        { opacity: 0, scale: 0.9, rotationY: -90, duration: 0.6, ease: E.in },
-        "phase2"
+        "<"
       )
       .to(
         categorySlide2.current,
-        { flex: 0.7, duration: 1, ease: E.inOut },
-        "phase2"
+        { flex: 0.7, duration: 0.5, ease: E.inOut },
+        "<"
       )
       .to(
         categorySlide3.current,
-        { flex: 0.3, duration: 1, ease: E.inOut },
-        "phase2"
+        { flex: 0.3, duration: 0.5, ease: E.inOut },
+        "<"
       )
+  
       .to(
-        text3Ref.current,
-        { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-        "phase2+=0.6"
-      );
+        categorySlide3.current,
+        { flex: 0.6, duration: 1.5, ease: E.inOut },
+        ">"
+      )
 
-    // --- PHASE 3 ---
-    tl.addLabel("phase3", "+=0.3")
       .to(
         categorySlide2.current,
         { flex: 0, duration: 1, ease: E.inOut },
-        "phase3"
+        "<+=0.2"
       )
-      .to(
-        text2Ref.current,
-        { opacity: 0, scale: 0.9, rotationY: -90, duration: 0.6, ease: E.in },
-        "phase3"
-      )
-      .to(
-        categorySlide3.current,
-        { flex: 0.5, duration: 1, ease: E.inOut },
-        "phase3"
-      )
-      .to(
-        categorySlide4.current,
-        { flex: 0.5, duration: 1, ease: E.inOut },
-        "phase3"
-      )
-      .to(
-        text4Ref.current,
+      .to(text4Ref.current,
         { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-        "phase3+=0.6"
-      );
+      )
+      .to(categorySlide4.current, { flex: 0.3, duration: 0.5, ease: E.inOut }, "<")
+
+
+
+    // .to(
+    //   categorySlide2.current,
+    //   { flex: 0.6, duration: 2, ease: E.inOut },
+    //   "<"
+    // )
+    // .to(
+    //   categorySlide2.current,
+    //   { flex: 0, duration: 0.5, ease: E.inOut },
+    //   ">+=0.5"
+    // );
+
+    // // --- PHASE 2 ---
+    // tl.addLabel("phase2")
+
+    //   .to(
+    //     categorySlide4.current, { flex: 0.3, duration: 0.5, ease: E.inOut }, "<"
+    //   )
+    //   .to(
+    //     text1Ref.current,
+    //     { opacity: 0, scale: 0.9, rotationY: -90, duration: 0.6, ease: E.in },
+    //     "phase2"
+    //   )
+
+
+    //   .to(
+    //     text3Ref.current,
+    //     { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
+    //     "phase2+=0.6"
+    //   );
+
+    // // --- PHASE 3 ---
+    // tl.addLabel("phase3")
+
+    //   .to(
+    //     text2Ref.current,
+    //     { opacity: 0, scale: 0.9, rotationY: -90, duration: 0.6, ease: E.in },
+    //     "phase3"
+    //   )
+    //   .to(
+    //     categorySlide3.current,
+    //     { flex: 0.5, duration: 1, ease: E.inOut },
+    //     "phase3"
+    //   )
+    //   .to(
+    //     categorySlide4.current,
+    //     { flex: 0.5, duration: 1, ease: E.inOut },
+    //     "phase3"
+    //   )
+    //   .to(
+    //     text4Ref.current,
+    //     { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
+    //     "phase3+=0.6"
+    //   );
 
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -180,7 +202,7 @@ const LandingHero = () => {
           >
             <div
               ref={categorySlide1}
-              className="flex-[0.7] h-full bg-[#798E7B] flex items-center justify-center overflow-hidden"
+              className="flex-[0.8] h-full bg-[#798E7B] flex items-center justify-center overflow-hidden"
             >
               <div ref={text1Ref} className="text-white text-2xl font-bold">
                 HOODIES
@@ -189,7 +211,7 @@ const LandingHero = () => {
 
             <div
               ref={categorySlide2}
-              className="bg-[#B692A1] flex-[0.3] h-full flex items-center justify-center overflow-hidden"
+              className="bg-[#B692A1] flex-[0.2] h-full flex items-center justify-center overflow-hidden"
             >
               <div
                 ref={text2Ref}
