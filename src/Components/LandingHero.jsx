@@ -160,15 +160,18 @@ const LandingHero = () => {
         <div className="container-hero flex w-full h-full relative overflow-hidden">
           <div
             ref={logoContainerRef}
-            className="absolute left-0 top-0 xl:w-1/2 h-full flex flex-col justify-center bg-[#F1EFEB] px-3 z-10"
+            className="absolute left-0 top-0 w-full h-full flex flex-col justify-center bg-[#F1EFEB] px-3 z-10"
           >
-            <span className="absolute top-16 text-6xl text-green-primary lg:text-4xl font-dew-regular w-[32%] xl:w-[36%]">WEAR THE  BLESSING</span>
-          
-            <div className="self-center w-[70%] md:w-[50%] h-[70%] md:h-[50%] mt-20">
-                <div>
-                    <img className="w-full h-full object-cover" src="/tshirts/hero-animation-zoom-tshirt.avif"/>
-                </div>
+            <span className="absolute top-16  text-black text-4xl sm:text-5xl font-dew-expanded-bold w-[60%] md:w-[32%] xl:w-[28%]">WEAR THE  BLESSING.</span>
+
+            <div className="self-center w-[80%] md:w-[50%] h-[30%] md:h-[40%] ">
+
+              <img className="w-full h-full object-cover" src="/tshirts/hero-animation-zoom-tshirt.avif" />
+
             </div>
+
+            <span className="absolute bottom-14 right-0 text-black text-4xl sm:text-5xl font-dew-expanded-bold  w-[60%] md:w-[36%] xl:w-[28%]">SHARE THE LIGHT.</span>
+
           </div>
 
           <div
