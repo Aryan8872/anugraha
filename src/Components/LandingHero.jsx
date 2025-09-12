@@ -90,7 +90,9 @@ const LandingHero = () => {
         { flex: 0.3, duration: 0.5, ease: E.inOut },
         "<"
       )
-  
+      .to(categorySlide4.current, { flex: 0.3, duration: 0.5, ease: E.inOut }, "<")
+
+
       .to(
         categorySlide3.current,
         { flex: 0.6, duration: 1.5, ease: E.inOut },
@@ -102,10 +104,16 @@ const LandingHero = () => {
         { flex: 0, duration: 1, ease: E.inOut },
         "<+=0.2"
       )
-      .to(text4Ref.current,
+      .to(categorySlide4.current, { flex: 0.4, duration: 0.3, ease: E.inOut },"<")
+
+      .to(
+        text3Ref.current,
         { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
+        "<"
       )
-      .to(categorySlide4.current, { flex: 0.3, duration: 0.5, ease: E.inOut }, "<")
+      .to(text4Ref.current,
+        { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop }, "<"
+      )
 
 
 
