@@ -17,6 +17,14 @@
   --font-dew-expanded-italic: 'Dew-expanded-italic', sans-serif;
 }
 
+.container-hero-wrapper {
+  display: block; /* prevents flex shrink issues */
+  width: 100%;
+  height: 88.5vh; /* same as hero */
+  overflow: hidden;
+}
+
+
 @font-face {
   font-family: 'Dew-semibold';
   src: url('/fonts/RFDewi-Semibold.woff')format('woff');

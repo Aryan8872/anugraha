@@ -25,7 +25,7 @@ const Navbar = () => {
         },
     ]
     return (
-        <div className='w-full flex justify-between py-6 px-2 lg:px-16  2xl:px-36 shadow-md items-center'>
+        <div className='sticky w-full flex justify-between py-6 px-2 lg:px-16  2xl:px-36 shadow-md items-center'>
             <div className="h-[50px] w-[100px] sm:w-[200px]">
                 <img src={logo} className="w-full h-full object-contain" />
             </div>
