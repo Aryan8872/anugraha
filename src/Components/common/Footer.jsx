@@ -7,12 +7,12 @@ import logo from "/logo/anugraha.png"
 
 const Footer = () => {
   return (
-    <div className="relative px-20 pt-16 py-20 bg-primary-bg w-full">
-      <div className='grid grid-cols-4 w-ful mb-5' >
-        <div className="flex flex-col gap-2 w-full text-left ">
+    <div className="relative pl-5 sm:pl-10 xl:px-20 pt-16 py-20 bg-primary-bg w-full">
+      <div className='grid grid-cols-2 gap-y-10 lg:grid-cols-4 gap-x-6 w-ful mb-5' >
+        <div className="flex flex-col gap-2 w-full col-span-2 lg:col-span-1 text-left ">
           <img src={logo} className="h-20 w-44" />
-          <span className="font-dew-bold leading-6 tracking-wider"> Laxmipur,Kankai-01, Jhapa</span>
-          <span className="font-dew-bold leading-6 tracking-wider">joelghale@gmail.com</span>
+          <span className="font-dew-bold leading-6 text-sm tracking-wider"> Laxmipur,Kankai-01, Jhapa</span>
+          <span className="font-dew-bold leading-6 text-sm tracking-wider">joelghale@gmail.com</span>
         </div>
         <div className="flex flex-col  gap-3 w-full text-left ">
           <span className="font-dew-bold pointer-events-none">Menu</span>
@@ -57,8 +57,8 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="absolute flex justify-center bottom-0 py-3 left-[20%]   w-[60%] mx-auto rounded-t-4xl bg-white shadow-md ">
-          <span className="flex gap-2 font-dew-semibold text-black/45  items-center">Copyright <BiCopyright/> Anugraha. All Rights Reserved.</span>
+      <div className="absolute flex justify-center bottom-0 py-3 left-0 mt-10 sm:left-[10%] md:left-[20%] w-full  sm:w-[80%]   md:w-[60%] mx-auto rounded-t-full bg-white shadow-md ">
+          <span className="flex gap-2 font-dew-semibold text-black/45  text-sm items-center">Copyright <BiCopyright/> Anugraha. All Rights Reserved.</span>
       </div>
     </div>
   )

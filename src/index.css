@@ -16,6 +16,13 @@
   --font-dew-expanded-regular: 'Dew-expanded-regular', sans-serif;
   --font-dew-expanded-italic: 'Dew-expanded-italic', sans-serif;
 }
+*{
+  box-sizing: border-box;
+  
+}
+body::-webkit-scrollbar{
+  display: none;
+}
 
 .container-hero-wrapper {
   display: block; /* prevents flex shrink issues */

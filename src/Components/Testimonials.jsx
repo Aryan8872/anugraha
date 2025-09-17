@@ -22,7 +22,7 @@ const testimonialData = [
 
 const Testimonials = () => {
     return (
-        <div className="w-full bg-white px-4 sm:px-12 rounded-b-4xl py-14 mt-12">
+        <div className="w-full bg-white px-4 sm:px-12 rounded-b-4xl pb-14 ">
             <Swiper
                 modules={[Navigation, Autoplay, Pagination]}
                 slidesPerView={1}
@@ -52,7 +52,7 @@ const Testimonials = () => {
                                 <img
                                     src={data.image}
                                     alt={data.name}
-                                    className="rounded-2xl min-h-[500px] object-contain"
+                                    className="rounded-2xl h-[300px] lg:min-h-[500px] object-contain"
                                 />
                             </div>
 

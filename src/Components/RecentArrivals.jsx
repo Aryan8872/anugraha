@@ -52,15 +52,15 @@ const RecentArrivals = () => {
     ]
 
     return (
-        <div className='w-full flex flex-col gap-12 rounded-t-4xl bg-white px-4 py-10 sm:px-12 h-[860px]'>
+        <div className='w-full flex flex-col gap-12 rounded-t-4xl bg-white px-4 py-20 sm:px-12  '>
             <div className='flex w-full items-center justify-between'>
-                <span className='font-dew-expanded-semibold text-2xl'>recent arrivals</span>
+                <span className='font-dew-expanded-semibold text-lg sm:text-2xl'>recent arrivals</span>
                 <div className='flex gap-7 items-center'>
-                    <span className='font-dew-semibold'>Take a look at out entire collection</span>
+                    <span className='hidden lg:block font-dew-semibold'>Take a look at out entire collection</span>
                     <RoundedButton text={"Open Store"} textcolor={"black"} bgcolor={"green-primary"} />
                 </div>
             </div>
-            <div className='h-full relative'>
+            <div className='h-full w-full relative'>
                 <Swiper
                     ref={swiperRef}
                     modules={[Navigation, Pagination]}
@@ -69,7 +69,6 @@ const RecentArrivals = () => {
                     slidesPerGroup={1}
                     speed={1200}
                     loop={true}
-
                     grabCursor={true}
                     pagination={{
                         clickable: true,
@@ -77,7 +76,7 @@ const RecentArrivals = () => {
                         el: '.custom-pagination',
                         type: 'bullets',
                         renderBullet: function (index, className) {
-                            return '<span class="' + className + ' !opacity-100 hover:!bg-gray-600"></span>';
+                            return '<span class="' + className + ' !opacity-100 mt-16  hover:!bg-gray-600"></span>';
                         }
                     }}
                     navigation={{
@@ -86,18 +85,18 @@ const RecentArrivals = () => {
                     }}
                     breakpoints={{
                         1024: {
-                            slidesPerView: 4,
-                            spaceBetween: 16,
+                            slidesPerView: 3,
+                            spaceBetween: 30,
                             slidesPerGroup: 4
                         },
                         768: {
                             slidesPerView: 3,
-                            spaceBetween: 16,
+                            spaceBetween: 30,
                             slidesPerGroup: 3
                         },
                         640: {
                             slidesPerView: 2,
-                            spaceBetween: 16,
+                            spaceBetween: 30,
                             slidesPerGroup: 2
                         },
                         240: {
@@ -109,9 +108,9 @@ const RecentArrivals = () => {
                 >
                     {
                         recentData.map((tshirt, index) => (
-                            <SwiperSlide key={index} className="w-[45%]">
-                                <div className={`flex w-full h-full flex-col gap-6 ${(index + 1) % 2 == 0 ? 'mt-24' : 'mt-0'}`}>
-                                    <div className='w-full bg-[#EEEBEE] h-[480px] rounded-4xl'>
+                            <SwiperSlide key={index} className="">
+                                <div className={`flex w-full  h-full flex-col gap-6 `}>
+                                    <div className='w-full bg-[#EEEBEE] h-[360px] md:h-[420px] rounded-4xl'>
                                         <img src={tshirt.image} className='w-full h-full object-contain' />
                                     </div>
                                     <div className='w-full flex justify-between items-center'>

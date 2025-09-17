@@ -2,6 +2,10 @@ import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+import tshirt from "/categories/t-shirt.png";
+import hoodies from "/categories/hoodie.png";
+import handbag from "/categories/handbag.png";
+import actionfig from "/categories/action-figures.jpg";
 
 const LandingHero = () => {
   const containerRef = useRef(null);
@@ -19,14 +23,16 @@ const LandingHero = () => {
   useLayoutEffect(() => {
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
-
-    gsap.set([text1Ref.current, text2Ref.current, text3Ref.current, text4Ref.current], {
-      opacity: 0,
-      scale: 0.9,
-      rotationY: 90,
-      transformStyle: "preserve-3d",
-      backfaceVisibility: "hidden",
-    });
+    gsap.set(
+      [text1Ref.current, text2Ref.current, text3Ref.current, text4Ref.current],
+      {
+        opacity: 0,
+        scale: 0.9,
+        rotationY: 90,
+        transformStyle: "preserve-3d",
+        backfaceVisibility: "hidden",
+      }
+    );
 
     const E = {
       inOut: "power2.inOut",
@@ -90,8 +96,11 @@ const LandingHero = () => {
         { flex: 0.3, duration: 0.5, ease: E.inOut },
         "<"
       )
-      .to(categorySlide4.current, { flex: 0.3, duration: 0.5, ease: E.inOut }, "<")
-
+      .to(
+        categorySlide4.current,
+        { flex: 0.3, duration: 0.5, ease: E.inOut },
+        "<"
+      )
 
       .to(
         categorySlide3.current,
@@ -104,72 +113,22 @@ const LandingHero = () => {
         { flex: 0, duration: 1, ease: E.inOut },
         "<+=0.2"
       )
-      .to(categorySlide4.current, { flex: 0.4, duration: 0.3, ease: E.inOut },"<")
+      .to(
+        categorySlide4.current,
+        { flex: 0.4, duration: 0.3, ease: E.inOut },
+        "<"
+      )
 
       .to(
         text3Ref.current,
         { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
         "<"
       )
-      .to(text4Ref.current,
-        { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop }, "<"
-      )
-
-
-
-    // .to(
-    //   categorySlide2.current,
-    //   { flex: 0.6, duration: 2, ease: E.inOut },
-    //   "<"
-    // )
-    // .to(
-    //   categorySlide2.current,
-    //   { flex: 0, duration: 0.5, ease: E.inOut },
-    //   ">+=0.5"
-    // );
-
-    // // --- PHASE 2 ---
-    // tl.addLabel("phase2")
-
-    //   .to(
-    //     categorySlide4.current, { flex: 0.3, duration: 0.5, ease: E.inOut }, "<"
-    //   )
-    //   .to(
-    //     text1Ref.current,
-    //     { opacity: 0, scale: 0.9, rotationY: -90, duration: 0.6, ease: E.in },
-    //     "phase2"
-    //   )
-
-
-    //   .to(
-    //     text3Ref.current,
-    //     { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-    //     "phase2+=0.6"
-    //   );
-
-    // // --- PHASE 3 ---
-    // tl.addLabel("phase3")
-
-    //   .to(
-    //     text2Ref.current,
-    //     { opacity: 0, scale: 0.9, rotationY: -90, duration: 0.6, ease: E.in },
-    //     "phase3"
-    //   )
-    //   .to(
-    //     categorySlide3.current,
-    //     { flex: 0.5, duration: 1, ease: E.inOut },
-    //     "phase3"
-    //   )
-    //   .to(
-    //     categorySlide4.current,
-    //     { flex: 0.5, duration: 1, ease: E.inOut },
-    //     "phase3"
-    //   )
-    //   .to(
-    //     text4Ref.current,
-    //     { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-    //     "phase3+=0.6"
-    //   );
+      .to(
+        text4Ref.current,
+        { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
+        "<"
+      );
 
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -192,16 +151,20 @@ const LandingHero = () => {
             ref={logoContainerRef}
             className="absolute left-0 top-0 w-full h-full flex flex-col justify-center bg-[#F1EFEB] px-3 z-10"
           >
-            <span className="absolute top-16  text-black text-4xl sm:text-5xl font-dew-expanded-bold w-[60%] md:w-[32%] xl:w-[28%]">WEAR THE  BLESSING.</span>
+            <span className="absolute top-16  text-black text-4xl sm:text-5xl font-dew-expanded-bold w-[60%] md:w-[32%] xl:w-[28%]">
+              WEAR THE BLESSING.
+            </span>
 
             <div className="self-center w-[80%] md:w-[50%] h-[30%] md:h-[40%] ">
-
-              <img className="w-full h-full object-cover" src="/tshirts/hero-animation-zoom-tshirt.avif" />
-
+              <img
+                className="w-full h-full object-cover"
+                src="/tshirts/hero-animation-zoom-tshirt.avif"
+              />
             </div>
 
-            <span className="absolute bottom-14 right-0 text-black text-4xl sm:text-5xl font-dew-expanded-bold  w-[60%] md:w-[36%] xl:w-[28%]">SHARE THE LIGHT.</span>
-
+            <span className="absolute bottom-14 right-0 text-black text-4xl sm:text-5xl font-dew-expanded-bold  w-[60%] md:w-[36%] xl:w-[28%]">
+              SHARE THE LIGHT.
+            </span>
           </div>
 
           <div
@@ -210,20 +173,25 @@ const LandingHero = () => {
           >
             <div
               ref={categorySlide1}
-              className="flex-[0.8] h-full bg-[#798E7B] flex items-center justify-center overflow-hidden"
+              className="flex-[0.8] h-full relative cursor-pointer bg-[#798E7B] flex items-center justify-center overflow-hidden"
             >
-              <div ref={text1Ref} className="text-white text-2xl font-bold">
+              <img src={hoodies} className="w-full h-full object-cover" />
+              <div
+                ref={text1Ref}
+                className="absolute text-white text-2xl font-bold"
+              >
                 HOODIES
               </div>
             </div>
 
             <div
               ref={categorySlide2}
-              className="bg-[#B692A1] flex-[0.2] h-full flex items-center justify-center overflow-hidden"
+              className="bg-[#B692A1] flex-[0.2] cursor-pointer h-full relative flex items-center justify-center overflow-hidden"
             >
+              <img src={handbag} className="w-full h-full object-cover" />
               <div
                 ref={text2Ref}
-                className="text-white text-xl font-bold transform rotate-90 whitespace-nowrap"
+                className="text-white text-xl absolute font-bold transform rotate-90 whitespace-nowrap"
               >
                 HANDBAGS
               </div>
@@ -231,11 +199,13 @@ const LandingHero = () => {
 
             <div
               ref={categorySlide3}
-              className="bg-[#BFCCD8] flex-[0.1] h-full flex items-center justify-center overflow-hidden"
+              className="bg-[#BFCCD8] flex-[0.1] cursor-pointer relative h-full flex items-center justify-center overflow-hidden"
             >
+              <img src={tshirt} className="w-full h-full object-cover" />
+
               <div
                 ref={text3Ref}
-                className="text-white text-lg font-bold transform rotate-90 whitespace-nowrap"
+                className="text-white text-lg font-bold absolute transform rotate-90 whitespace-nowrap"
               >
                 T-SHIRTS
               </div>
@@ -243,11 +213,13 @@ const LandingHero = () => {
 
             <div
               ref={categorySlide4}
-              className="bg-[#E8B4B8] flex-[0] h-full flex items-center justify-center overflow-hidden"
+              className="bg-[#E8B4B8] flex-[0] cursor-pointer h-full relative flex items-center justify-center overflow-hidden"
             >
+              <img src={actionfig} className="w-full h-full object-cover" />
+
               <div
                 ref={text4Ref}
-                className="text-white text-lg font-bold transform rotate-90 whitespace-nowrap"
+                className="text-white text-lg font-bold  absolute transform rotate-90 whitespace-nowrap"
               >
                 ACTION FIGURES
               </div>
