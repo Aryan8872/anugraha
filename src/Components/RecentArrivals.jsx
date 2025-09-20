@@ -52,7 +52,7 @@ const RecentArrivals = () => {
     ]
 
     return (
-        <div className='w-full flex flex-col gap-12 rounded-t-4xl bg-white px-4 py-20 sm:px-12  '>
+        <div className='w-full flex flex-col gap-12  bg-white px-4 py-20 sm:px-12  '>
             <div className='flex w-full items-center justify-between'>
                 <span className='font-dew-expanded-semibold text-lg sm:text-2xl'>recent arrivals</span>
                 <div className='flex gap-7 items-center'>

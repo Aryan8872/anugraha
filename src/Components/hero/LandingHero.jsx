@@ -9,12 +9,15 @@ import actionfig from "/categories/action-figures.jpg";
 
 const LandingHero = () => {
   const containerRef = useRef(null);
+  const mainImageRef = useRef(null);
   const logoContainerRef = useRef(null);
   const categoryContainerRef = useRef(null);
   const categorySlide1 = useRef(null);
   const categorySlide2 = useRef(null);
   const categorySlide3 = useRef(null);
   const categorySlide4 = useRef(null);
+  const maintext1Ref = useRef(null);
+  const maintext2Ref = useRef(null);
   const text1Ref = useRef(null);
   const text2Ref = useRef(null);
   const text3Ref = useRef(null);
@@ -22,9 +25,19 @@ const LandingHero = () => {
 
   useLayoutEffect(() => {
     ScrollTrigger.getAll().forEach((t) => t.kill());
-
+    gsap.set([
+        maintext1Ref.current,
+        maintext2Ref.current,
+    ],{
+      opacity:0
+    })
     gsap.set(
-      [text1Ref.current, text2Ref.current, text3Ref.current, text4Ref.current],
+      [
+        text1Ref.current,
+        text2Ref.current,
+        text3Ref.current,
+        text4Ref.current,
+      ],
       {
         opacity: 0,
         scale: 0.9,
@@ -40,6 +53,36 @@ const LandingHero = () => {
       pop: "back.out(1.6)",
       in: "power2.in",
     };
+    const tl0 = gsap.timeline();
+
+    tl0
+      .addLabel("initialphase")
+      .to(maintext1Ref.current, {
+        opacity: 1,
+        duration: 1,
+        ease: E.in,
+        color:"black",
+        stagger: 0.2,
+      })
+      .to(maintext2Ref.current, {
+        opacity: 1,
+        duration: 1,
+        color:"black",
+        ease: E.in,
+        stagger: 0.2,
+      },"<")
+
+      .to(mainImageRef.current, { width:"100%", top:0,left:0, height:"100%", duration: 0.5, ease: E.in })
+      .to(
+        maintext1Ref.current,
+        { color: "white", duration: 0.6, ease: E.inOut },
+        "<"
+      )
+      .to(
+        maintext2Ref.current,
+        { color: "white", duration: 0.6, ease: E.inOut },
+        "<"
+      );
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -79,7 +122,7 @@ const LandingHero = () => {
       .to(
         categorySlide1.current,
         { flex: 0, duration: 1, ease: E.inOut },
-        "phase1+=0.5"
+        "phase1+=0.6"
       )
       .to(
         text2Ref.current,
@@ -151,18 +194,25 @@ const LandingHero = () => {
             ref={logoContainerRef}
             className="absolute left-0 top-0 w-full h-full flex flex-col justify-center bg-[#F1EFEB] px-3 z-10"
           >
-            <span className="absolute top-16  text-black text-4xl sm:text-5xl font-dew-expanded-bold w-[60%] md:w-[32%] xl:w-[28%]">
+            <span
+              ref={maintext1Ref}
+              className="absolute z-20 top-16  text-black text-4xl sm:text-5xl font-dew-expanded-bold w-[60%] md:w-[32%] xl:w-[28%]"
+            >
               WEAR THE BLESSING.
             </span>
 
-            <div className="self-center w-[80%] md:w-[50%] h-[30%] md:h-[40%] ">
+            <div className="fixed inset-0 w-full h-full">
               <img
-                className="w-full h-full object-cover"
-                src="/tshirts/hero-animation-zoom-tshirt.avif"
+                ref={mainImageRef}
+                className="w-[45%] h-[40%] absolute top-[30%] left-[24%] object-cover"
+                src="/categories/heroimage.png"
               />
             </div>
 
-            <span className="absolute bottom-14 right-0 text-black text-4xl sm:text-5xl font-dew-expanded-bold  w-[60%] md:w-[36%] xl:w-[28%]">
+            <span
+              ref={maintext2Ref}
+              className="absolute bottom-14 right-0 text-black text-4xl sm:text-5xl font-dew-expanded-bold  w-[60%] md:w-[36%] xl:w-[28%]"
+            >
               SHARE THE LIGHT.
             </span>
           </div>
@@ -175,7 +225,12 @@ const LandingHero = () => {
               ref={categorySlide1}
               className="flex-[0.8] h-full relative cursor-pointer bg-[#798E7B] flex items-center justify-center overflow-hidden"
             >
-              <img src={hoodies} className="w-full h-full object-cover" />
+              <img
+                src={hoodies}
+                width={900}
+                height={1200}
+                className="w-full h-full  object-cover"
+              />
               <div
                 ref={text1Ref}
                 className="absolute text-white text-2xl font-bold"
@@ -221,7 +276,7 @@ const LandingHero = () => {
                 ref={text4Ref}
                 className="text-white text-lg font-bold  absolute transform rotate-90 whitespace-nowrap"
               >
-                ACTION FIGURES
+                ACESSORIES
               </div>
             </div>
           </div>

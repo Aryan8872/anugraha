@@ -7,7 +7,7 @@ const MainLayout = () => {
 
         <>
             <Navbar />
-            <main className='bg-primary-bg px-2 sm:px-4'>
+            <main className='bg-primary-bg'>
 
                 <Outlet />
                 {/* <Footer/> */}

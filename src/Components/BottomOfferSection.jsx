@@ -2,7 +2,7 @@ import RoundedButton from './common/RoundedButton'
 import bottomshirt from "/tshirts/bottom.png"
 const BottomOffer = () => {
     return (
-        <section className='relative flex rounded-4xl bg-darkgreen-secondary w-full h-[360px]'>
+        <section className='relative flex  bg-darkgreen-secondary w-full h-[360px]'>
             <div className='flex flex-col gap-15 my-auto pl-6 md:pl-10  lg:pl-24 w-[47%] md:w-[52%] lg:w-[45%] text-left'>
                 <span className='font-dew-expanded-semibold text-lg sm:text-2xl lg:text-4xl text-white'>Do you want a hoodie with an excellent print for a great discount?</span>
                 <RoundedButton text={"Explore more"} />
