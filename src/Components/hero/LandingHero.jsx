@@ -25,25 +25,36 @@ const LandingHero = () => {
 
   useLayoutEffect(() => {
     ScrollTrigger.getAll().forEach((t) => t.kill());
-    gsap.set([
-        maintext1Ref.current,
-        maintext2Ref.current,
-    ],{
-      opacity:0
-    })
+    
+    // Set initial states with force3D for better performance
+    gsap.set([maintext1Ref.current, maintext2Ref.current], {
+      opacity: 0,
+      force3D: true
+    });
+    
     gsap.set(
-      [
-        text1Ref.current,
-        text2Ref.current,
-        text3Ref.current,
-        text4Ref.current,
-      ],
+      [text1Ref.current, text2Ref.current, text3Ref.current, text4Ref.current],
       {
         opacity: 0,
         scale: 0.9,
         rotationY: 90,
         transformStyle: "preserve-3d",
         backfaceVisibility: "hidden",
+        force3D: true
+      }
+    );
+
+    // Optimize for mobile - add will-change hint
+    gsap.set(
+      [
+        categorySlide1.current,
+        categorySlide2.current,
+        categorySlide3.current,
+        categorySlide4.current
+      ],
+      {
+        force3D: true,
+        willChange: "flex"
       }
     );
 
@@ -52,7 +63,9 @@ const LandingHero = () => {
       out: "power3.out",
       pop: "back.out(1.6)",
       in: "power2.in",
+      smooth: "power1.inOut" // Added smoother easing
     };
+
     const tl0 = gsap.timeline();
 
     tl0
@@ -61,26 +74,39 @@ const LandingHero = () => {
         opacity: 1,
         duration: 1,
         ease: E.in,
-        color:"black",
+        color: "black",
         stagger: 0.2,
+        force3D: true
       })
-      .to(maintext2Ref.current, {
-        opacity: 1,
-        duration: 1,
-        color:"black",
+      .to(
+        maintext2Ref.current,
+        {
+          opacity: 1,
+          duration: 1,
+          color: "black",
+          ease: E.in,
+          stagger: 0.2,
+          force3D: true
+        },
+        "<"
+      )
+      .to(mainImageRef.current, {
+        width: "100%",
+        top: 0,
+        left: 0,
+        height: "100%",
+        duration: 0.5,
         ease: E.in,
-        stagger: 0.2,
-      },"<")
-
-      .to(mainImageRef.current, { width:"100%", top:0,left:0, height:"100%", duration: 0.5, ease: E.in })
+        force3D: true
+      })
       .to(
         maintext1Ref.current,
-        { color: "white", duration: 0.6, ease: E.inOut },
+        { color: "white", duration: 0.6, ease: E.inOut, force3D: true },
         "<"
       )
       .to(
         maintext2Ref.current,
-        { color: "white", duration: 0.6, ease: E.inOut },
+        { color: "white", duration: 0.6, ease: E.inOut, force3D: true },
         "<"
       );
 
@@ -88,88 +114,88 @@ const LandingHero = () => {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=1000", // slower animation (increased distance)
-        scrub: 2.5, // smoother + slower reaction
+        end: "+=1200", // Increased for more control
+        scrub: 3, // Smoother scrubbing
         pin: true,
         pinSpacing: true,
-        // markers: true,
-      },
+        anticipatePin: 1, // Helps with mobile performance
+        fastScrollEnd: true // Better mobile handling
+      }
     });
 
-    // --- PHASE 1 ---
+    // --- PHASE 1 - FIXED TIMING ---
     tl.addLabel("phase1")
       .to(
         logoContainerRef.current,
-        { xPercent: -105, duration: 1.2, ease: E.out },
+        { xPercent: -105, duration: 1.5, ease: E.out, force3D: true },
         "phase1"
       )
       .to(
         categoryContainerRef.current,
-        { width: "100%", marginLeft: "0px", duration: 0.4, ease: E.out },
+        { width: "100%", marginLeft: "0px", duration: 0.6, ease: E.out, force3D: true },
         "<"
       )
+      // FIRST SLIDE - Made much smoother and longer
       .to(
         categorySlide1.current,
-        { flex: 0.7, duration: 0.3, ease: E.inOut },
+        { flex: 0.7, duration: 1, ease: E.smooth, force3D: true },
         "<"
       )
       .to(
         text1Ref.current,
-        { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-        "<"
+        { opacity: 1, scale: 1, rotationY: 0, duration: 1, ease: E.pop, force3D: true },
+        "<+0.2"
       )
-
+      // Hold the first slide longer before transitioning
       .to(
         categorySlide1.current,
-        { flex: 0, duration: 1, ease: E.inOut },
-        "phase1+=0.6"
+        { flex: 0, duration: 1.5, ease: E.smooth, force3D: true },
+        "phase1+=1.8"
       )
       .to(
         text2Ref.current,
-        { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-        "<"
+        { opacity: 1, scale: 1, rotationY: 0, duration: 1, ease: E.pop, force3D: true },
+        "<+0.2"
       )
       .to(
         categorySlide2.current,
-        { flex: 0.7, duration: 0.5, ease: E.inOut },
+        { flex: 0.7, duration: 0.8, ease: E.smooth, force3D: true },
         "<"
       )
       .to(
         categorySlide3.current,
-        { flex: 0.3, duration: 0.5, ease: E.inOut },
+        { flex: 0.3, duration: 0.8, ease: E.smooth, force3D: true },
         "<"
       )
       .to(
         categorySlide4.current,
-        { flex: 0.3, duration: 0.5, ease: E.inOut },
+        { flex: 0.3, duration: 0.8, ease: E.smooth, force3D: true },
         "<"
       )
-
+      // Third slide transition
       .to(
         categorySlide3.current,
-        { flex: 0.6, duration: 1.5, ease: E.inOut },
+        { flex: 0.6, duration: 1.5, ease: E.smooth, force3D: true },
         ">"
       )
-
       .to(
         categorySlide2.current,
-        { flex: 0, duration: 1, ease: E.inOut },
-        "<+=0.2"
+        { flex: 0, duration: 1.2, ease: E.smooth, force3D: true },
+        "<+0.3"
       )
       .to(
         categorySlide4.current,
-        { flex: 0.4, duration: 0.3, ease: E.inOut },
+        { flex: 0.4, duration: 0.8, ease: E.smooth, force3D: true },
         "<"
       )
-
       .to(
         text3Ref.current,
-        { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-        "<"
+        { opacity: 1, scale: 1, rotationY: 0, duration: 1, ease: E.pop, force3D: true },
+        "<+0.2"
       )
       .to(
         text4Ref.current,
-        { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
+        { opacity: 1, scale: 1, rotationY: 0, duration: 1, ease: E.pop, force3D: true },
         "<"
       );
 
@@ -183,7 +209,7 @@ const LandingHero = () => {
     { socialmedia: "Facebook", link: "", icon: "/icons/facebook.webp" },
     { socialmedia: "Instagram", link: "", icon: "/icons/instagram.webp" },
     { socialmedia: "X", link: "", icon: "/icons/x.webp" },
-    { socialmedia: "Whatsapp", link: "", icon: "/icons/whatsapp.webp" },
+    { socialmedia: "Whatsapp", link: "", icon: "/icons/whatsapp.webp" }
   ];
 
   return (
@@ -196,7 +222,7 @@ const LandingHero = () => {
           >
             <span
               ref={maintext1Ref}
-              className="absolute z-20 top-16  text-black text-4xl sm:text-5xl font-dew-expanded-bold w-[60%] md:w-[32%] xl:w-[28%]"
+              className="absolute z-20 top-16 text-black text-4xl sm:text-5xl font-dew-expanded-bold w-[60%] md:w-[32%] xl:w-[28%]"
             >
               WEAR THE BLESSING.
             </span>
@@ -211,7 +237,7 @@ const LandingHero = () => {
 
             <span
               ref={maintext2Ref}
-              className="absolute bottom-14 right-0 text-black text-4xl sm:text-5xl font-dew-expanded-bold  w-[60%] md:w-[36%] xl:w-[28%]"
+              className="absolute bottom-14 right-0 text-black text-4xl sm:text-5xl font-dew-expanded-bold w-[60%] md:w-[36%] xl:w-[28%]"
             >
               SHARE THE LIGHT.
             </span>
@@ -229,7 +255,7 @@ const LandingHero = () => {
                 src={hoodies}
                 width={900}
                 height={1200}
-                className="w-full h-full  object-cover"
+                className="w-full h-full object-cover"
               />
               <div
                 ref={text1Ref}
@@ -274,7 +300,7 @@ const LandingHero = () => {
 
               <div
                 ref={text4Ref}
-                className="text-white text-lg font-bold  absolute transform rotate-90 whitespace-nowrap"
+                className="text-white text-lg font-bold absolute transform rotate-90 whitespace-nowrap"
               >
                 ACESSORIES
               </div>
