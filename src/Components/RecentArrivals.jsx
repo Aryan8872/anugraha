@@ -14,8 +14,8 @@ const RecentArrivals = () => {
   return (
     <div className="w-full flex flex-col gap-12  bg-white px-4 py-20 sm:px-12  ">
       <div className="flex w-full items-center justify-between">
-        <span className="font-dew-expanded-semibold text-lg sm:text-2xl">
-          recent arrivals
+        <span className="font-dew-bold text-lg sm:text-2xl">
+          Recent Arrivals
         </span>
         <div className="flex gap-7 items-center">
           <span className="hidden lg:block font-dew-semibold">
