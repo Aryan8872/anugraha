@@ -6,51 +6,10 @@ import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import RoundedButton from "./common/RoundedButton";
 import { Link } from "react-router-dom";
+import { recentData } from "../data/RecentTshirtData";
 
 const RecentArrivals = () => {
   const swiperRef = useRef(null);
-  const recentData = [
-    {
-      name: "Graphity print",
-      price: "$999",
-      image: "/tshirts/tshirt1.png",
-    },
-    {
-      name: "Graphity print",
-      price: "$999",
-      image: "/tshirts/tshirt2.png",
-    },
-    {
-      name: "Graphity print",
-      price: "$999",
-      image: "/tshirts/tshirt3.png",
-    },
-    {
-      name: "Graphity print",
-      price: "$999",
-      image: "/tshirts/tshirt4.png",
-    },
-    {
-      name: "Graphity print",
-      price: "$999",
-      image: "/tshirts/tshirt5.png",
-    },
-    {
-      name: "Graphity print",
-      price: "$999",
-      image: "/tshirts/tshirt6.png",
-    },
-    {
-      name: "Graphity print",
-      price: "$999",
-      image: "/tshirts/tshirt4.png",
-    },
-    {
-      name: "Graphity print",
-      price: "$999",
-      image: "/tshirts/tshirt5.png",
-    },
-  ];
 
   return (
     <div className="w-full flex flex-col gap-12  bg-white px-4 py-20 sm:px-12  ">

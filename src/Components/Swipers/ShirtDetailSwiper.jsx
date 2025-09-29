@@ -14,7 +14,7 @@ const ShirtDetailSwiper = ({ data }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
-    <div className="w-full relative flex flex-row gap-2">
+    <div className="lg:w-full flex flex-col-reverse lg:flex-row gap-2">
       {/* Thumbnails */}
       <Swiper
         onSwiper={setThumbsSwiper}
@@ -22,17 +22,25 @@ const ShirtDetailSwiper = ({ data }) => {
         slidesPerView={3}
         watchSlidesProgress
         direction="vertical"
-        className="shirt-detail-swiper-custom-navigation h-[500px] w-28"
+        breakpoints={{
+          1024:{
+            direction:"vertical"
+          },
+          0:{
+            direction:"horizontal"
+          }
+        }}
+        className="shirt-detail-swiper-custom-navigation !mx-0 lg:h-[500px]  lg:w-28"
       >
         {sideImages.map((img, index) => (
           <SwiperSlide key={index}>
-            <img src={img} className="h-40 w-28 rounded-md object-cover" />
+            <img src={img} className="h-40 w-full lg:w-28 rounded-md object-cover" />
           </SwiperSlide>
         ))}
       </Swiper>
 
       <Swiper
-        className="h-[680px] w-[100%]"
+        className="h-[65vh]  bg-red-200 !mx-0 w-[100%]"
         slidesPerView={1}
         loop={true}
         grabCursor={true}
