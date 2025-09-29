@@ -1,0 +1,1 @@
+export const data = "We don't accept returns or exchanges for this product unless there is a DEFECT."
