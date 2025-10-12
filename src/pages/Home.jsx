@@ -10,7 +10,7 @@ const Home = () => {
             <LandingHero/>
             {/* <HeroSwiper /> */}
 
-            <div className="flex flex-col bg-white shadow-md rounded-4xl mt-8 mb-8 gap-10">
+            <div className="flex flex-col bg-white shadow-md rounded-4xl mt-8 mb-8 gap-3">
                 <RecentArrivals />
                 <Testimonials />
             </div>

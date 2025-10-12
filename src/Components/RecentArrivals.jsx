@@ -41,7 +41,7 @@ const RecentArrivals = () => {
           pagination={{
             clickable: true,
             dynamicMainBullets: false,
-            el: ".custom-pagination",
+            el: ".custom-pagination-recent-arrivals-swiper",
             type: "bullets",
             renderBullet: function (index, className) {
               return (
@@ -116,7 +116,7 @@ const RecentArrivals = () => {
                     <FcPrevious />
                 </button> */}
 
-        <div className="custom-pagination flex gap-2 mt-6 justify-center"></div>
+        <div className="custom-pagination-recent-arrivals-swiper flex gap-2 mt-6 justify-center"></div>
       </div>
     </div>
   );
