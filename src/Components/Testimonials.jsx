@@ -54,7 +54,7 @@ const Testimonials = () => {
           <SwiperSlide key={index}>
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
               <div className="flex flex-col gap-7 w-full self-start lg:w-1/4">
-                <h2 className="text-2xl font-dew-expanded-semibold">
+                <h2 className="text-2xl font-dew-semibold">
                   Testimonials
                 </h2>
                 <p className="text-gray-600 font-dew-bold">

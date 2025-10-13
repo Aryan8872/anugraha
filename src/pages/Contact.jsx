@@ -9,17 +9,17 @@ const Contact = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [queryType, setQueryType] = useState("");
   const [message, setMessage] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [success, setSuccess] = useState(false); // ✅ track submission success
 
-  // Optional: prevent page reload and submit via fetch
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Prepare form data
     const form = e.target;
-    const data = new URLSearchParams(new FormData(form)).toString();
+
+    const formData = new FormData(form);
+    const data = new URLSearchParams(formData).toString();
 
     fetch("/", {
       method: "POST",
@@ -27,7 +27,7 @@ const Contact = () => {
       body: data,
     })
       .then(() => {
-        alert("Message sent successfully!");
+        setSuccess(true); // show success message
         // Reset form fields
         setFirstName("");
         setLastName("");
@@ -35,6 +35,9 @@ const Contact = () => {
         setPhoneNumber("");
         setQueryType("");
         setMessage("");
+
+        // Hide success message after 5 seconds
+        setTimeout(() => setSuccess(false), 5000);
       })
       .catch((err) => alert("Failed to send message: " + err));
   };
@@ -55,12 +58,10 @@ const Contact = () => {
         <div className="flex flex-col h-full justify-between w-xl">
           <section className="flex flex-col gap-5">
             <p className="flex flex-col gap-4 text-5xl font-dew-semibold text-white">
-              <span>
-                You Have Questions,<br />
-                We Have Answers
-              </span>
+              You Have Questions,<br />
+              We Have Answers
             </p>
-            <span className="font-dew-regular text-white ">
+            <span className="font-dew-regular text-white">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium deleniti
               voluptatibus quas totam quod. Rerum quod earum cupiditate deleniti recusandae.
             </span>
@@ -111,11 +112,18 @@ const Contact = () => {
           method="POST"
           data-netlify="true"
           onSubmit={handleSubmit}
-          className="bg-white max-w-[480px] h-full rounded-xl shadow-md px-4 py-3 flex flex-col gap-3"
+          className="bg-white max-w-[480px] h-full rounded-xl shadow-md px-4 py-3 flex flex-col gap-3 relative"
         >
-          {/* Required hidden input for Netlify */}
+          {/* Hidden inputs for Netlify */}
           <input type="hidden" name="form-name" value="contact" />
           <input type="hidden" name="queryType" value={queryType} />
+
+          {/* Success message overlay */}
+          {success && (
+            <div className="absolute inset-0 bg-green-100 bg-opacity-90 flex items-center justify-center rounded-xl z-30 text-green-900 font-dew-semibold text-center px-4">
+              Your message has been sent successfully!
+            </div>
+          )}
 
           <span className="font-dew-semibold text-2xl">Tell Us Your Query</span>
           <span className="font-dew-regular text-black/50">
@@ -187,7 +195,10 @@ const Contact = () => {
             className="mt-3 px-3 py-4 focus:outline-none rounded-xl resize-none w-full h-full border-[1.2px] border-black/30"
           />
 
-          <button className="w-full mt-2 bg-green-primary cursor-pointer text-sm md:text-base rounded-4xl sm:py-3 px-3 py-2 sm:px-5 font-dew-semibold">
+          <button
+            type="submit"
+            className="w-full mt-2 bg-green-primary cursor-pointer text-sm md:text-base rounded-4xl sm:py-3 px-3 py-2 sm:px-5 font-dew-semibold"
+          >
             Submit
           </button>
         </form>
