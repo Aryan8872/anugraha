@@ -9,7 +9,7 @@ const BottomOffer = () => {
             </div>
 
             <div className='absolute right-0 lg:right-[10%]  h-full '>
-                <img src={bottomshirt} className='h-full w-48 sm:w-64  object-contain sm:object-cover'/>
+                <img loading='lazy' src={bottomshirt} className='h-full w-48 sm:w-64  object-contain sm:object-cover'/>
                 <div className='absolute right-32 shadow-md sm:right-64 top-14 flex flex-col  font-dew-expanded-semibold text-xl sm:text-2xl  text-white bg-black/45 border-[1.3px] items-center justify-center border-white rounded-full h-10 w-10 sm:h-28 sm:w-28 p-10 sm:p-16 lg:p-10'>
                     <span>30%</span>
                     <span>OFF</span>

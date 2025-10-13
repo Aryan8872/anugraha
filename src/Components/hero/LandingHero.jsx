@@ -22,7 +22,7 @@ const LandingHero = () => {
   const text2Ref = useRef(null);
   const text3Ref = useRef(null);
   const text4Ref = useRef(null);
-
+  
   useLayoutEffect(() => {
     ScrollTrigger.getAll().forEach((t) => t.kill());
     gsap.set([
@@ -203,6 +203,7 @@ const LandingHero = () => {
 
             <div className="fixed inset-0 w-full h-full">
               <img
+              loading="lazy"
                 ref={mainImageRef}
                 className="w-[45%] h-[40%] absolute top-[30%] left-[24%] object-cover"
                 src="/categories/heroimage.png"
@@ -226,6 +227,7 @@ const LandingHero = () => {
               className="flex-[0.8] h-full relative cursor-pointer bg-[#798E7B] flex items-center justify-center overflow-hidden"
             >
               <img
+              loading="lazy"
                 src={hoodies}
                 width={900}
                 height={1200}
@@ -243,7 +245,7 @@ const LandingHero = () => {
               ref={categorySlide2}
               className="bg-[#B692A1] flex-[0.2] cursor-pointer h-full relative flex items-center justify-center overflow-hidden"
             >
-              <img src={handbag} className="w-full h-full object-cover" />
+              <img  loading="lazy" src={handbag} className="w-full h-full object-cover" />
               <div
                 ref={text2Ref}
                 className="text-white text-xl absolute font-bold transform rotate-90 whitespace-nowrap"
@@ -256,7 +258,7 @@ const LandingHero = () => {
               ref={categorySlide3}
               className="bg-[#BFCCD8] flex-[0.1] cursor-pointer relative h-full flex items-center justify-center overflow-hidden"
             >
-              <img src={tshirt} className="w-full h-full object-cover" />
+              <img loading="lazy" src={tshirt} className="w-full h-full object-cover" />
 
               <div
                 ref={text3Ref}
@@ -270,7 +272,7 @@ const LandingHero = () => {
               ref={categorySlide4}
               className="bg-[#E8B4B8] flex-[0] cursor-pointer h-full relative flex items-center justify-center overflow-hidden"
             >
-              <img src={actionfig} className="w-full h-full object-cover" />
+              <img loading="lazy" src={actionfig} className="w-full h-full object-cover" />
 
               <div
                 ref={text4Ref}

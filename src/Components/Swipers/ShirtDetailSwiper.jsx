@@ -34,7 +34,7 @@ const ShirtDetailSwiper = ({ data }) => {
       >
         {sideImages.map((img, index) => (
           <SwiperSlide key={index}>
-            <img src={img} className="h-40 w-full lg:w-28 rounded-md object-cover" />
+            <img loading="lazy" src={img} className="h-40 w-full lg:w-28 rounded-md object-cover" />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -49,7 +49,7 @@ const ShirtDetailSwiper = ({ data }) => {
       >
         {sideImages.map((img, index) => (
           <SwiperSlide key={index}>
-            <img src={img} className="w-full h-full rounded-md object-cover" />
+            <img loading="lazy" src={img} className="w-full h-full rounded-md object-cover" />
           </SwiperSlide>
         ))}
       </Swiper>

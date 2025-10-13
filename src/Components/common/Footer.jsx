@@ -10,7 +10,7 @@ const Footer = () => {
     <div className="relative pl-5 sm:pl-10 xl:px-20 pt-16 py-20 bg-primary-bg w-full">
       <div className='grid grid-cols-2 gap-y-10 lg:grid-cols-4 gap-x-6 w-ful mb-5' >
         <div className="flex flex-col gap-2 w-full col-span-2 lg:col-span-1 text-left ">
-          <img src={logo} className="h-20 w-44" />
+          <img loading="lazy" src={logo} className="h-20 w-44" />
           <span className="font-dew-bold leading-6 text-sm tracking-wider"> Laxmipur,Kankai-01, Jhapa</span>
           <span className="font-dew-bold leading-6 text-sm tracking-wider">joelghale@gmail.com</span>
         </div>
@@ -39,19 +39,19 @@ const Footer = () => {
         <div className="flex flex-col  gap-3 w-full text-left ">
           <span className="font-dew-bold pointer-events-none">Social Links</span>
           <span className="flex gap-3 items-center cursor-pointer font-dew-semibold hover:text-black mt-3 text-black/65">
-            <img src={instagram} className="h-[20px] w-[20px]" />
+            <img loading="lazy" src={instagram} className="h-[20px] w-[20px]" />
             Instagram
           </span>
           <span className="flex gap-3 items-center cursor-pointer font-dew-semibold hover:text-black text-black/65">
-            <img src={facebook} className="h-[20px] w-[20px]" />
+            <img  loading="lazy" src={facebook} className="h-[20px] w-[20px]" />
             Facebook
           </span>
           <span className="flex gap-3 items-center cursor-pointer font-dew-semibold hover:text-black text-black/65">
-            <img src={x} className="h-[20px] w-[20px]" />
+            <img loading="lazy" src={x} className="h-[20px] w-[20px]" />
             X
           </span>
           <span className="flex gap-3 items-center cursor-pointer font-dew-semibold hover:text-black text-black/65">
-            <img src={whatsapp} className="h-[20px] w-[20px]" />
+            <img loading="lazy" src={whatsapp} className="h-[20px] w-[20px]" />
             Whatsapp
           </span>
         </div>

@@ -65,6 +65,7 @@ const HeroSwiper = () => {
                             <div className="flex flex-col h-full md:flex-row justify-between   w-full px-8 xl:px-16 py-10 md:py-16">
                                 <div className="flex items-center justify-center w-full md:w-[45%] mb-8 md:mb-0">
                                     <img
+                                    loading='lazy'
                                         src={data.imageLink}
                                         className="w-full max-h-[60vh] object-contain"
                                         alt={data.title}

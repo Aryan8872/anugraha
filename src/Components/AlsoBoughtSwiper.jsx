@@ -68,6 +68,7 @@ const AlsoBoughtSwiper = () => {
               <div className={`flex w-full  h-full flex-col gap-6 `}>
                 <div className="w-full bg-[#EEEBEE] h-[360px] md:h-[420px] rounded-4xl">
                   <img
+                  loading="lazy"
                     src={tshirt.image}
                     className="w-full h-full object-cover rounded-4xl"
                   />

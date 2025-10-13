@@ -70,6 +70,7 @@ const Testimonials = () => {
               <div className="w-full flex flex-row  gap-3 ">
                 <div className="w-full rounded-4xl xl:ml-32 flex justify-center bg-image-bg-color">
                   <img
+                  loading="lazy"
                     src={data.image}
                     alt={data.name}
                     className="rounded-2xl h-[300px] lg:min-h-[500px] object-contain"
