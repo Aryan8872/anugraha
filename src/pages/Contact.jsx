@@ -53,9 +53,9 @@ const Contact = () => {
     >
       <div className="w-full bg-black/30 h-full absolute inset-0 z-10"></div>
 
-      <div className="absolute z-20 px-6 py-7 h-full flex flex-row w-full justify-between">
+      <div className="absolute z-20 px-3 md:px-6 py-7 h-full flex flex-col md:flex-row w-full justify-between">
         {/* Left side info */}
-        <div className="flex flex-col h-full justify-between w-xl">
+        <div className="hidden md:flex flex-col h-full justify-between w-xl">
           <section className="flex flex-col gap-5">
             <p className="flex flex-col gap-4 text-5xl font-dew-semibold text-white">
               You Have Questions,<br />
@@ -67,7 +67,7 @@ const Contact = () => {
             </span>
           </section>
 
-          <section className="grid grid-cols-2 gap-y-10">
+          <section className="grid grid-cols-1 lg:grid-cols-2 gap-y-10">
             <div className="flex flex-col gap-2">
               <span className="flex flex-row text-white font-dew-semibold items-center gap-2">
                 <MdEmail color="white" size={20} />
@@ -112,7 +112,7 @@ const Contact = () => {
           method="POST"
           data-netlify="true"
           onSubmit={handleSubmit}
-          className="bg-white max-w-[480px] h-full rounded-xl shadow-md px-4 py-3 flex flex-col gap-3 relative"
+          className="bg-white w-full self-center md:self-auto max-w-[480px] h-full rounded-xl shadow-md px-4 py-3 flex flex-col gap-3 relative"
         >
           {/* Hidden inputs for Netlify */}
           <input type="hidden" name="form-name" value="contact" />
@@ -130,14 +130,14 @@ const Contact = () => {
             Our team is ready to assist you with every detail, big or small
           </span>
 
-          <div className="mt-5 flex gap-3">
+          <div className="mt-5 flex flex-col sm:flex-row gap-3  w-full">
             <input
               placeholder="First Name"
               value={firstName}
               name="firstName"
               onChange={(e) => setFirstName(e.target.value)}
               type="text"
-              className="h-10 px-4 focus:outline-none rounded-3xl border-[1.2px] border-black/30"
+              className="h-10 px-4 sm:w-1/2 shrink focus:outline-none rounded-3xl border-[1.2px] border-black/30"
             />
             <input
               placeholder="Last Name"
@@ -145,18 +145,18 @@ const Contact = () => {
               value={lastName}
               name="lastName"
               onChange={(e) => setLastName(e.target.value)}
-              className="rounded-3xl focus:outline-none h-10 px-4 border-[1.2px] border-black/30"
+              className="rounded-3xl w-full sm:w-1/2 focus:outline-none h-10 px-4 border-[1.2px] border-black/30"
             />
           </div>
 
-          <div className="mt-3 flex gap-3">
+          <div className="md:mt-3   flex flex-col sm:flex-row gap-3  w-full">
             <input
               placeholder="Email"
               type="email"
               value={email}
               name="email"
               onChange={(e) => setEmail(e.target.value)}
-              className="h-10 focus:outline-none px-4 rounded-3xl border-[1.2px] border-black/30"
+              className="h-10 w-full sm:w-1/2 focus:outline-none px-4 rounded-3xl border-[1.2px] border-black/30"
             />
             <input
               placeholder="Phone Number"
@@ -164,7 +164,7 @@ const Contact = () => {
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               type="text"
-              className="rounded-3xl focus:outline-none h-10 px-4 border-[1.2px] border-black/30"
+              className="w-full sm:w-1/2 rounded-3xl focus:outline-none h-10 px-4 border-[1.2px] border-black/30"
             />
           </div>
 
