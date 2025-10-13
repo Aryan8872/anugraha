@@ -69,7 +69,7 @@ const AlsoBoughtSwiper = () => {
                 <div className="w-full bg-[#EEEBEE] h-[360px] md:h-[420px] rounded-4xl">
                   <img
                     src={tshirt.image}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover rounded-4xl"
                   />
                 </div>
                 <div className="w-full flex justify-between items-center">

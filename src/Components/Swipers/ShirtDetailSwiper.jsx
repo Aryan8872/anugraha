@@ -8,8 +8,8 @@ import "swiper/css/thumbs";
 
 const ShirtDetailSwiper = ({ data }) => {
   const sideImages = data.other_images?.length
-    ? [data.front_image, data.back_image, ...data.other_images]
-    : [data.front_image, data.back_image];
+    ? [data.front_image, data.back_images, ...data.other_images]
+    : [data.front_image, data.back_images];
 
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -40,7 +40,7 @@ const ShirtDetailSwiper = ({ data }) => {
       </Swiper>
 
       <Swiper
-        className="h-[65vh]  bg-red-200 !mx-0 w-[100%]"
+        className="h-[65vh] !mx-0 w-[100%]"
         slidesPerView={1}
         loop={true}
         grabCursor={true}
