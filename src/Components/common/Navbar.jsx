@@ -2,11 +2,23 @@ import { BiHeart, BiMenu, BiSearch } from "react-icons/bi";
 import { BsBag } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import logo from "/logo/anugraha.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CgClose } from "react-icons/cg";
 const Navbar = () => {
   const navigate = useNavigate();
   const [showSideMenu, ShowSideMenu] = useState(false);
+  const [showNavbar, SetShowNavbar] = useState(true);
+  const [prevScrollPos, SetPrevScrollPos] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      SetShowNavbar(currentScrollPos < prevScrollPos || currentScrollPos == 0);
+      SetPrevScrollPos(currentScrollPos);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos]);
   const navbarLinks = [
     {
       label: "Home",
@@ -29,7 +41,9 @@ const Navbar = () => {
   ];
   return (
     <>
-      <div className="sticky w-full flex justify-between py-6 px-2 lg:px-16  2xl:px-36 shadow-md items-center">
+      <div
+        className={`${showNavbar ? "translate-y-0" : "-translate-y-full"} sticky top-0 z-[90] transition-all duration-300 ease-in-out bg-primary-bg w-full flex justify-between py-6 px-2 lg:px-16  2xl:px-36 shadow-md items-center`}
+      >
         <div className="h-[50px] w-[100px] sm:w-[200px]">
           <img
             loading="lazy"
@@ -76,10 +90,10 @@ const Navbar = () => {
                 <span
                   key={index}
                   className="font-dew-semibold text-xl w-full cursor-pointer hover:underline"
-                  onClick={() =>{ 
-                    navigate(link.path)
-                    ShowSideMenu(false)
-                }}
+                  onClick={() => {
+                    navigate(link.path);
+                    ShowSideMenu(false);
+                  }}
                 >
                   {link.label}
                 </span>

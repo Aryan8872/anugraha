@@ -88,7 +88,7 @@ const LandingHero = () => {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=1000", // slower animation (increased distance)
+        end: "+=3000", // slower animation (increased distance)
         scrub: 2.5, // smoother + slower reaction
         pin: true,
         pinSpacing: true,
