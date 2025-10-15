@@ -13,8 +13,10 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
-      SetShowNavbar(currentScrollPos < prevScrollPos || currentScrollPos == 0);
+      SetShowNavbar(currentScrollPos < prevScrollPos || currentScrollPos === prevScrollPos);
       SetPrevScrollPos(currentScrollPos);
+      console.log("current scroll pos", currentScrollPos);
+      console.log("prev scroll pos", prevScrollPos);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -80,10 +82,10 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`lg:hidden ${showSideMenu ? "translate-y-0" : "-translate-y-full"} fixed transition-all ease-in-out duration-300 inset-0 z-[50] w-screen h-screen bg-black/60`}
+        className={`lg:hidden ${showSideMenu ? "translate-y-0" : "-translate-y-full"} fixed transition-all ease-in-out duration-300 inset-0 z-[9999] w-screen h-screen bg-black/60`}
       >
         <div className="flex absolute bg-white shadow-md left-[50%] -translate-x-1/2 w-full h-full">
-          <CgClose size={30} className="absolute top-6 right-6" />
+          <CgClose onClick={()=>ShowSideMenu(false)} size={30} className="absolute top-6 right-6" />
           <div className="flex flex-col gap-5 w-full px-7 h-full justify-center items-start">
             {navbarLinks.map((link, index) => (
               <>
