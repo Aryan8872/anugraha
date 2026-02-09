@@ -1,0 +1,156 @@
+export interface ShirtData {
+  id: number;
+  front_image: string;
+  tshirt_name: string;
+  back_image: string
+  tshirt_price: string;
+  tshirt_sizes: string[];
+  quantity_available: number;
+  other_images: string[];
+  stock: boolean;
+  slug: string;
+  tshirt_description: string
+}
+
+export const tshirtDetailData: ShirtData[] = [
+
+  {
+    id: 1,
+    front_image: "/tshirts/godsplan/godsplan1.jpg",
+    back_image: "",
+    tshirt_name: "God’s Plan – Classic Black Tee",
+    tshirt_price: "1200",
+    tshirt_sizes: ["S", "M", "L", "XL"],
+    quantity_available: 7,
+    other_images: [],
+    stock: true,
+    slug: "",
+    tshirt_description:
+      "Keep it simple, bold, and meaningful. This premium black t-shirt features the iconic “God’s Plan” text in clean white print — a reminder of faith, purpose, and confidence in your journey.",
+  },
+  {
+    id: 2,
+    front_image: "/tshirts/lamb99/lamb1.jpg",
+    back_image: "/tshirts/lamb99/lamb2.jpg",
+    tshirt_name: "He Left the 99 to Find Me – White Faith Tee",
+    tshirt_price: "1200",
+    tshirt_sizes: ["S", "M", "L", "XL"],
+    quantity_available: 7,
+    stock: true,
+    slug: "",
+    other_images: [],
+    tshirt_description: "A design that speaks grace and love. This white t-shirt features a minimal black “He left the 99 to find me” quote paired with a subtle lamb graphic, symbolizing compassion, redemption, and faith. A perfect daily reminder of being found and loved.",
+  },
+
+  {
+    id: 3,
+    front_image: "",
+    back_image: "",
+    tshirt_name: "",
+    tshirt_price: "",
+    tshirt_sizes: ["S", "M", "L", "XL"],
+    quantity_available: 7,
+    stock: true,
+    other_images: [],
+    slug: "",
+    tshirt_description: "",
+  },
+
+  {
+    id: 4,
+    front_image: "",
+    back_image: "",
+    tshirt_name: "",
+    tshirt_price: "",
+    tshirt_sizes: ["S", "M", "L", "XL"],
+    quantity_available: 7,
+    stock: true,
+    other_images: [],
+    slug: "",
+    tshirt_description: "",
+  },
+
+  {
+    id: 5,
+    front_image: "",
+    back_image: "",
+    tshirt_name: "",
+    tshirt_price: "",
+    tshirt_sizes: ["S", "M", "L", "XL"],
+    quantity_available: 7,
+    stock: true,
+    other_images: [],
+    slug: "",
+    tshirt_description: "",
+  },
+
+  {
+    id: 6,
+    front_image: "",
+    back_image: "",
+    tshirt_name: "",
+    tshirt_price: "",
+    tshirt_sizes: ["S", "M", "L", "XL"],
+    quantity_available: 7,
+    stock: true,
+    other_images: [],
+    slug: "",
+    tshirt_description: "",
+  },
+
+  {
+    id: 7,
+    front_image: "",
+    back_image: "",
+    tshirt_name: "",
+    tshirt_price: "",
+    tshirt_sizes: ["S", "M", "L", "XL"],
+    quantity_available: 7,
+    stock: true,
+    other_images: [],
+    slug: "",
+    tshirt_description: "",
+  },
+
+  {
+    id: 8,
+    front_image: "",
+    back_image: "",
+    tshirt_name: "",
+    tshirt_price: "",
+    tshirt_sizes: ["S", "M", "L", "XL"],
+    quantity_available: 7,
+    stock: true,
+    other_images: [],
+    slug: "",
+    tshirt_description: "",
+  },
+
+  {
+    id: 9,
+    front_image: "",
+    back_image: "",
+    tshirt_name: "",
+    tshirt_price: "",
+    tshirt_sizes: ["S", "M", "L", "XL"],
+    quantity_available: 7,
+    stock: true,
+    other_images: [],
+    slug: "",
+    tshirt_description: "",
+  },
+
+  {
+    id: 10,
+    front_image: "",
+    back_image: "",
+    tshirt_name: "",
+    tshirt_price: "",
+    tshirt_sizes: ["S", "M", "L", "XL"],
+    quantity_available: 7,
+    stock: true,
+    slug: "",
+    other_images: [],
+    tshirt_description: "",
+  },
+];

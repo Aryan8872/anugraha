@@ -1,0 +1,19 @@
+const RoundedButton = ({
+  text,
+  bgcolor,
+  textcolor,
+}: {
+  text: string;
+  bgcolor?: string;
+  textcolor?: string;
+}) => {
+  return (
+    <button
+      className={`w-auto self-start cursor-pointer text-sm md:text-base rounded-4xl sm:py-3 px-3 py-2 sm:px-5 font-dew-semibold ${bgcolor ? `bg-${bgcolor}` : "bg-white"} ${textcolor ? `text-${textcolor}` : "text-black"}`}
+    >
+      {text}
+    </button>
+  );
+};
+
+export default RoundedButton;

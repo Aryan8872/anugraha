@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  --color-green-primary: #b9e697;
+  --color-primary-bg: #f2f2f2;
+  --color-grey-primary: #262626;
+  --color-image-bg-grey: #5e5f5a;
+  --color-darkgreen-secondary: #49633f;
+  --color-image-bg-color: #918f82;
+  --font-dew-semibold: "Dew-semibold", sans-serif;
+  --font-dew-regular: "Dew-regular", sans-serif;
+  --font-dew-bold: "Dew-bold", sans-serif;
+  --font-dew-expanded-bold: "Dew-expanded-bold", sans-serif;
+  --font-dew-expanded-semibold: "Dew-expanded-semibold", sans-serif;
+  --font-dew-expanded-regular: "Dew-expanded-regular", sans-serif;
+  --font-dew-expanded-italic: "Dew-expanded-italic", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.container-hero-wrapper {
+  display: block; /* prevents flex shrink issues */
+  width: 100%;
+  /* Make hero truly fullscreen across browsers */
+  height: 100vh; /* fallback */
+  min-height: 100svh; /* account for mobile dynamic UI */
+  min-height: 100dvh; /* modern dynamic viewport */
+  overflow: hidden;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
