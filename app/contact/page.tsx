@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from "react";
 import { MdEmail } from "react-icons/md";
 import { PiPhone } from "react-icons/pi";
@@ -14,33 +15,6 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false); // ✅ track submission success
 
-  // const handleSubmit = (e:) => {
-  //   e.preventDefault();
-  //   const form = e.target;
-
-  //   const formData = new FormData(form);
-  //   const data = new URLSearchParams(formData).toString();
-
-  //   fetch("/", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //     body: data,
-  //   })
-  //     .then(() => {
-  //       setSuccess(true); // show success message
-  //       // Reset form fields
-  //       setFirstName("");
-  //       setLastName("");
-  //       setEmail("");
-  //       setPhoneNumber("");
-  //       setQueryType("");
-  //       setMessage("");
-
-  //       // Hide success message after 5 seconds
-  //       setTimeout(() => setSuccess(false), 5000);
-  //     })
-  //     .catch((err) => alert("Failed to send message: " + err));
-  // };
 
   return (
     <div

@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
-
 
 const LandingHero = () => {
   const containerRef = useRef(null);
@@ -20,29 +20,21 @@ const LandingHero = () => {
   const text2Ref = useRef(null);
   const text3Ref = useRef(null);
   const text4Ref = useRef(null);
-  
+
   useLayoutEffect(() => {
     ScrollTrigger.getAll().forEach((t) => t.kill());
-    gsap.set([
-        maintext1Ref.current,
-        maintext2Ref.current,
-    ],{
-      opacity:0
-    })
+    gsap.set([maintext1Ref.current, maintext2Ref.current], {
+      opacity: 0,
+    });
     gsap.set(
-      [
-        text1Ref.current,
-        text2Ref.current,
-        text3Ref.current,
-        text4Ref.current,
-      ],
+      [text1Ref.current, text2Ref.current, text3Ref.current, text4Ref.current],
       {
         opacity: 0,
         scale: 0.9,
         rotationY: 90,
         transformStyle: "preserve-3d",
         backfaceVisibility: "hidden",
-      }
+      },
     );
 
     const E = {
@@ -59,27 +51,38 @@ const LandingHero = () => {
         opacity: 1,
         duration: 1,
         ease: E.in,
-        color:"black",
+        color: "black",
         stagger: 0.2,
       })
-      .to(maintext2Ref.current, {
-        opacity: 1,
-        duration: 1,
-        color:"black",
-        ease: E.in,
-        stagger: 0.2,
-      },"<")
+      .to(
+        maintext2Ref.current,
+        {
+          opacity: 1,
+          duration: 1,
+          color: "black",
+          ease: E.in,
+          stagger: 0.2,
+        },
+        "<",
+      )
 
-      .to(mainImageRef.current, { width:"100%", top:0,left:0, height:"100%", duration: 0.5, ease: E.in })
+      .to(mainImageRef.current, {
+        width: "100%",
+        top: 0,
+        left: 0,
+        height: "100%",
+        duration: 0.5,
+        ease: E.in,
+      })
       .to(
         maintext1Ref.current,
         { color: "white", duration: 0.6, ease: E.inOut },
-        "<"
+        "<",
       )
       .to(
         maintext2Ref.current,
         { color: "white", duration: 0.6, ease: E.inOut },
-        "<"
+        "<",
       );
 
     const tl = gsap.timeline({
@@ -99,76 +102,76 @@ const LandingHero = () => {
       .to(
         logoContainerRef.current,
         { xPercent: -105, duration: 1.2, ease: E.out },
-        "phase1"
+        "phase1",
       )
       .to(
         categoryContainerRef.current,
         { width: "100%", marginLeft: "0px", duration: 0.4, ease: E.out },
-        "<"
+        "<",
       )
       .to(
         categorySlide1.current,
         { flex: 0.7, duration: 0.3, ease: E.inOut },
-        "<"
+        "<",
       )
       .to(
         text1Ref.current,
         { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-        "<"
+        "<",
       )
 
       .to(
         categorySlide1.current,
         { flex: 0, duration: 1, ease: E.inOut },
-        "phase1+=0.6"
+        "phase1+=0.6",
       )
       .to(
         text2Ref.current,
         { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-        "<"
+        "<",
       )
       .to(
         categorySlide2.current,
         { flex: 0.7, duration: 0.5, ease: E.inOut },
-        "<"
+        "<",
       )
       .to(
         categorySlide3.current,
         { flex: 0.3, duration: 0.5, ease: E.inOut },
-        "<"
+        "<",
       )
       .to(
         categorySlide4.current,
         { flex: 0.3, duration: 0.5, ease: E.inOut },
-        "<"
+        "<",
       )
 
       .to(
         categorySlide3.current,
         { flex: 0.6, duration: 1.5, ease: E.inOut },
-        ">"
+        ">",
       )
 
       .to(
         categorySlide2.current,
         { flex: 0, duration: 1, ease: E.inOut },
-        "<+=0.2"
+        "<+=0.2",
       )
       .to(
         categorySlide4.current,
         { flex: 0.4, duration: 0.3, ease: E.inOut },
-        "<"
+        "<",
       )
 
       .to(
         text3Ref.current,
         { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-        "<"
+        "<",
       )
       .to(
         text4Ref.current,
         { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-        "<"
+        "<",
       );
 
     return () => {
@@ -201,7 +204,7 @@ const LandingHero = () => {
 
             <div className="fixed inset-0 w-full h-full">
               <img
-              loading="lazy"
+                loading="lazy"
                 ref={mainImageRef}
                 className="w-[45%] h-[40%] absolute top-[30%] left-[24%] object-cover"
                 src="/categories/heroimage.png"
@@ -225,25 +228,30 @@ const LandingHero = () => {
               className="flex-[0.8] h-full relative cursor-pointer bg-[#798E7B] flex items-center justify-center overflow-hidden"
             >
               <img
-              loading="lazy"
+                loading="lazy"
                 src={"/categories/hoodie.png"}
                 width={900}
                 height={1200}
                 className="w-full h-full  object-cover"
               />
-              <div
+              <Link
+                href={"/hoodies/slug1"}
                 ref={text1Ref}
                 className="absolute text-white text-2xl font-bold"
               >
                 HOODIES
-              </div>
+              </Link>
             </div>
 
             <div
               ref={categorySlide2}
               className="bg-[#B692A1] flex-[0.2] cursor-pointer h-full relative flex items-center justify-center overflow-hidden"
             >
-              <img  loading="lazy" src={"/categories/handbag.png"} className="w-full h-full object-cover" />
+              <img
+                loading="lazy"
+                src={"/categories/handbag.png"}
+                className="w-full h-full object-cover"
+              />
               <div
                 ref={text2Ref}
                 className="text-white text-xl absolute font-bold transform rotate-90 whitespace-nowrap"
@@ -256,7 +264,11 @@ const LandingHero = () => {
               ref={categorySlide3}
               className="bg-[#BFCCD8] flex-[0.1] cursor-pointer relative h-full flex items-center justify-center overflow-hidden"
             >
-              <img loading="lazy" src={"/categories/action-figures.jpg"} className="w-full h-full object-cover" />
+              <img
+                loading="lazy"
+                src={"/categories/action-figures.jpg"}
+                className="w-full h-full object-cover"
+              />
 
               <div
                 ref={text3Ref}
@@ -270,7 +282,11 @@ const LandingHero = () => {
               ref={categorySlide4}
               className="bg-[#E8B4B8] flex-[0] cursor-pointer h-full relative flex items-center justify-center overflow-hidden"
             >
-              <img loading="lazy" src={"/categories/action-figures.jpg"} className="w-full h-full object-cover" />
+              <img
+                loading="lazy"
+                src={"/categories/action-figures.jpg"}
+                className="w-full h-full object-cover"
+              />
 
               <div
                 ref={text4Ref}
