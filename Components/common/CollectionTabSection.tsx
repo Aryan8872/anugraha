@@ -6,7 +6,7 @@ export default function CollectionTabSection() {
   const categoryTabs = ["hoodies", "bags", "tshirts"];
   const bigIndex = [3, 12, 13, 14];
   return (
-    <section className="w-full bg-[#F8F8FA] ">
+    <section className="w-full  ">
       <div className="flex flex-row items-center w-full lg:justify-between">
         <div className="flex flex-row gap-6">
           {categoryTabs.map((value, idx) => (

@@ -12,7 +12,7 @@ export default function Home() {
       {/* <HeroSwiper /> */}
       <CollectionTabSection/>
 
-      <div className="flex flex-col bg-white rounded-4xl mt-8 mb-8 gap-3">
+      <div className="flex flex-col rounded-4xl mt-8 mb-8 gap-3">
         <RecentArrivals />
         <Testimonials />
       </div>

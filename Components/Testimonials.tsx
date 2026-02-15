@@ -22,7 +22,7 @@ const testimonialData = [
 
 const Testimonials = () => {
   return (
-    <div className="w-full bg-white  pb-14 ">
+    <div className="w-full   pb-14 ">
       <Swiper
         modules={[Navigation, Autoplay, Pagination]}
         slidesPerView={1}

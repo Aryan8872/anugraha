@@ -13,7 +13,7 @@ const RecentArrivals = () => {
   const swiperRef = useRef(null);
 
   return (
-    <div className="w-full flex flex-col gap-12  bg-white  py-20 ">
+    <div className="w-full flex flex-col gap-12   py-20 ">
       <div className="flex w-full items-center justify-between">
         <span className="font-dew-bold text-lg sm:text-2xl">
           Recent Arrivals
