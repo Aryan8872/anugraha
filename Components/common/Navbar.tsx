@@ -7,19 +7,21 @@ import Link from "next/link";
 const Navbar = () => {
   const [showSideMenu, ShowSideMenu] = useState(false);
   const [showNavbar, SetShowNavbar] = useState(true);
-  const [prevScrollPos, SetPrevScrollPos] = useState(0);
 
   useEffect(() => {
+    let lastScrollPos = window.scrollY;
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
       SetShowNavbar(
-        currentScrollPos < prevScrollPos || currentScrollPos === prevScrollPos,
+        currentScrollPos === 0 ||
+          currentScrollPos < lastScrollPos ||
+          currentScrollPos <= 20,
       );
-      SetPrevScrollPos(currentScrollPos);
+      lastScrollPos = currentScrollPos;
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos]);
+  }, []);
   const navbarLinks = [
     {
       label: "Home",
