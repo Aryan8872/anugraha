@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { BiHeart, BiMenu, BiSearch } from "react-icons/bi";
 import { BsBag } from "react-icons/bs";
 import { useEffect, useState } from "react";
@@ -14,7 +14,7 @@ const Navbar = () => {
       const currentScrollPos = window.scrollY;
       SetShowNavbar(
         currentScrollPos === 0 ||
-          currentScrollPos < lastScrollPos ||
+          currentScrollPos <= lastScrollPos ||
           currentScrollPos <= 20,
       );
       lastScrollPos = currentScrollPos;
@@ -31,10 +31,14 @@ const Navbar = () => {
       label: "About",
       path: "/about",
     },
+    {
+      label: "Browse",
+      path: "/browse",
+    },
 
     {
-      label: "Gallery",
-      path: "/gallery",
+      label: "collections",
+      path: "/collections",
     },
 
     {
@@ -45,7 +49,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`${showNavbar ? "translate-y-0" : "-translate-y-full"} sticky top-0 z-[90] transition-all duration-300 ease-in-out bg-primary-bg w-full flex justify-between py-6 px-2 lg:px-16  2xl:px-36 shadow-md items-center`}
+        className={`${showNavbar ? "translate-y-0" : "-translate-y-full"} sticky top-0 z-[90] transition-all duration-300 ease-in-out bg-white w-full flex justify-between py-6 px-8  items-center`}
       >
         <div className="h-[50px] w-[100px] sm:w-[200px]">
           <img
@@ -55,19 +59,17 @@ const Navbar = () => {
           />
         </div>
 
-        <div className="hidden lg:flex gap-10 items-center">
-          {navbarLinks.map((link, index) => (
-            <>
-              <Link
-                href={link.path}
-                key={index}
-                className="font-dew-semibold cursor-pointer hover:underline"
-              >
-                {link.label}
-              </Link>
-            </>
-          ))}
-        </div>
+        {navbarLinks.map((link, index) => (
+          <>
+            <Link
+              href={link.path}
+              key={index}
+              className="lg:block hidden font-clash-display  font-medium capitalize cursor-pointer hover:underline"
+            >
+              {link.label}
+            </Link>
+          </>
+        ))}
 
         <BiMenu
           size={45}

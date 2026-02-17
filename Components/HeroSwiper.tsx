@@ -1,4 +1,4 @@
-
+"use client"
 import { FcNext, FcPrevious } from 'react-icons/fc';
 import 'swiper/css';
 import { Autoplay, Navigation, Pagination, Parallax } from 'swiper/modules';

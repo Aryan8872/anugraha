@@ -4,8 +4,8 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-giuconda: var(--font-guiconda);
-
+  --font-clash-display: var(--font-clash-display);
+  --color-text-black: #040415;
   --color-green-primary: #b9e697;
   --color-primary-bg: #f2f2f2;
   --color-grey-primary: #262626;
@@ -31,7 +31,7 @@
 body {
   /* background: var(--background);
   color: var(--foreground); */
-  font-family: var(--font-giaconda), Arial, Helvetica, sans-serif;
+  font-family: var(--font-clash-display), Arial, Helvetica, sans-serif;
 }
 
 .card {

@@ -1,305 +1,200 @@
 "use client";
-import React, { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link";
+
 gsap.registerPlugin(ScrollTrigger);
 
-const LandingHero = () => {
-  const containerRef = useRef(null);
-  const mainImageRef = useRef(null);
-  const logoContainerRef = useRef(null);
-  const categoryContainerRef = useRef(null);
-  const categorySlide1 = useRef(null);
-  const categorySlide2 = useRef(null);
-  const categorySlide3 = useRef(null);
-  const categorySlide4 = useRef(null);
-  const maintext1Ref = useRef(null);
-  const maintext2Ref = useRef(null);
-  const text1Ref = useRef(null);
-  const text2Ref = useRef(null);
-  const text3Ref = useRef(null);
-  const text4Ref = useRef(null);
+export default function LandingHero() {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const introRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
 
   useLayoutEffect(() => {
-    ScrollTrigger.getAll().forEach((t) => t.kill());
-    gsap.set([maintext1Ref.current, maintext2Ref.current], {
-      opacity: 0,
-    });
-    gsap.set(
-      [text1Ref.current, text2Ref.current, text3Ref.current, text4Ref.current],
-      {
-        opacity: 0,
-        scale: 0.9,
-        rotationY: 90,
-        transformStyle: "preserve-3d",
-        backfaceVisibility: "hidden",
-      },
-    );
+    const ctx = gsap.context(() => {
+      const [card1, card2, card3] = cardsRef.current;
+      const intro = introRef.current;
 
-    const E = {
-      inOut: "power2.inOut",
-      out: "power3.out",
-      pop: "back.out(1.6)",
-      in: "power2.in",
-    };
-    const tl0 = gsap.timeline();
+      // --- INITIAL POSITIONS (VISIBLE STRIPS) ---
+      gsap.set(intro, { left: "0%", width: "50%", xPercent: 0, zIndex: 0 });
+      gsap.set(card1, { left: "50%", width: "50%", xPercent: 0, zIndex: 10 });
 
-    tl0
-      .addLabel("initialphase")
-      .to(maintext1Ref.current, {
-        opacity: 1,
-        duration: 1,
-        ease: E.in,
-        color: "black",
-        stagger: 0.2,
-      })
-      .to(
-        maintext2Ref.current,
-        {
-          opacity: 1,
-          duration: 1,
-          color: "black",
-          ease: E.in,
-          stagger: 0.2,
+      // Card 2: Starts at 84%, overlapping Card 1
+      gsap.set(card2, { left: "84%", width: "50%", xPercent: 0, zIndex: 20 });
+
+      // Card 3: Starts at 92%, overlapping Card 2 (Both visible initially)
+      gsap.set(card3, { left: "92%", width: "50%", xPercent: 0, zIndex: 30 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: rootRef.current,
+          start: "top top",
+          end: "+=4500", // Adjusted scroll length
+          scrub: 1,
+          pin: true,
         },
-        "<",
-      )
+      });
 
-      .to(mainImageRef.current, {
-        width: "100%",
-        top: 0,
-        left: 0,
-        height: "100%",
-        duration: 0.5,
-        ease: E.in,
-      })
-      .to(
-        maintext1Ref.current,
-        { color: "white", duration: 0.6, ease: E.inOut },
-        "<",
-      )
-      .to(
-        maintext2Ref.current,
-        { color: "white", duration: 0.6, ease: E.inOut },
-        "<",
+      /* ============================
+         PHASE 1: PIKKO & INTRO EXIT, UBAC ENTERS
+      ============================ */
+      // Intro moves -50vw (xPercent -100)
+      tl.to(intro, { xPercent: -100, ease: "none", duration: 1 }, "phase1");
+
+      // Card 1 moves -50vw (xPercent -100) -> Lands at 0
+      tl.to(card1, { xPercent: -100, ease: "none", duration: 1 }, "phase1");
+
+      // Card 2 moves -34vw (xPercent -68) -> Lands at 50%
+      tl.to(card2, { xPercent: -68, ease: "none", duration: 1 }, "phase1");
+
+      // Card 3 moves -8vw (xPercent -16) -> Lands at 84% (New Strip Position)
+      tl.to(card3, { xPercent: -16, ease: "none", duration: 1 }, "phase1");
+
+      // Reveal Ubac Content
+      tl.to(
+        card2.querySelector(".content-wrapper"),
+        { opacity: 1, duration: 0.3 },
+        "phase1+=0.5",
       );
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "+=3000", // slower animation (increased distance)
-        scrub: 2.5, // smoother + slower reaction
-        pin: true,
-        pinSpacing: true,
-        // markers: true,
-      },
-    });
+      /* ============================
+         PHASE 2: UBAC EXITS, SANCTUARY ENTERS
+      ============================ */
+      // Card 1 moves another -50vw (Total -200%) -> Lands at -50%
+      tl.to(card1, { xPercent: -200, ease: "none", duration: 1 }, "phase2");
 
-    // --- PHASE 1 ---
-    tl.addLabel("phase1")
-      .to(
-        logoContainerRef.current,
-        { xPercent: -105, duration: 1.2, ease: E.out },
-        "phase1",
-      )
-      .to(
-        categoryContainerRef.current,
-        { width: "100%", marginLeft: "0px", duration: 0.4, ease: E.out },
-        "<",
-      )
-      .to(
-        categorySlide1.current,
-        { flex: 0.7, duration: 0.3, ease: E.inOut },
-        "<",
-      )
-      .to(
-        text1Ref.current,
-        { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-        "<",
-      )
+      // Card 2 moves another -50vw (Total -168%) -> Lands at 0
+      tl.to(card2, { xPercent: -168, ease: "none", duration: 1 }, "phase2");
 
-      .to(
-        categorySlide1.current,
-        { flex: 0, duration: 1, ease: E.inOut },
-        "phase1+=0.6",
-      )
-      .to(
-        text2Ref.current,
-        { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-        "<",
-      )
-      .to(
-        categorySlide2.current,
-        { flex: 0.7, duration: 0.5, ease: E.inOut },
-        "<",
-      )
-      .to(
-        categorySlide3.current,
-        { flex: 0.3, duration: 0.5, ease: E.inOut },
-        "<",
-      )
-      .to(
-        categorySlide4.current,
-        { flex: 0.3, duration: 0.5, ease: E.inOut },
-        "<",
-      )
+      // Card 3 moves -42vw (Total -84%) -> Lands at 50%
+      tl.to(card3, { xPercent: -84, ease: "none", duration: 1 }, "phase2");
 
-      .to(
-        categorySlide3.current,
-        { flex: 0.6, duration: 1.5, ease: E.inOut },
-        ">",
-      )
-
-      .to(
-        categorySlide2.current,
-        { flex: 0, duration: 1, ease: E.inOut },
-        "<+=0.2",
-      )
-      .to(
-        categorySlide4.current,
-        { flex: 0.4, duration: 0.3, ease: E.inOut },
-        "<",
-      )
-
-      .to(
-        text3Ref.current,
-        { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-        "<",
-      )
-      .to(
-        text4Ref.current,
-        { opacity: 1, scale: 1, rotationY: 0, duration: 0.8, ease: E.pop },
-        "<",
+      // Reveal Sanctuary Content
+      tl.to(
+        card3.querySelector(".content-wrapper"),
+        { opacity: 1, duration: 0.3 },
+        "phase2+=0.5",
       );
 
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-      tl.kill();
-    };
+      /* ============================
+         PHASE 3: DEPTH SCALE
+      ============================ */
+      tl.to(
+        [intro, card1, card2, card3],
+        {
+          scale: 0.95,
+          transformOrigin: "center center",
+          ease: "power1.inOut",
+          duration: 0.3,
+        },
+        "phase3",
+      );
+
+      /* ============================
+         PARALLAX
+      ============================ */
+      const images = cardsRef.current.map((c) =>
+        c?.querySelector(".inner-img"),
+      );
+      tl.to(images, { xPercent: 15, ease: "none", duration: 2.3 }, 0);
+    }, rootRef);
+
+    return () => ctx.revert();
   }, []);
 
-  const socialmediaData = [
-    { socialmedia: "Facebook", link: "", icon: "/icons/facebook.webp" },
-    { socialmedia: "Instagram", link: "", icon: "/icons/instagram.webp" },
-    { socialmedia: "X", link: "", icon: "/icons/x.webp" },
-    { socialmedia: "Whatsapp", link: "", icon: "/icons/whatsapp.webp" },
-  ];
-
   return (
-    <div className="hero-wrapper">
-      <div ref={containerRef} className="container-hero-wrapper">
-        <div className="container-hero flex w-full h-full relative overflow-hidden">
-          <div
-            ref={logoContainerRef}
-            className="absolute left-0 top-0 w-full h-full flex flex-col justify-center bg-[#F1EFEB] px-3 z-10"
-          >
-            <span
-              ref={maintext1Ref}
-              className="absolute z-20 top-16  text-black text-4xl sm:text-5xl font-dew-expanded-bold w-[60%] md:w-[32%] xl:w-[28%]"
-            >
-              WEAR THE BLESSING.
-            </span>
-
-            <div className="fixed inset-0 w-full h-full">
-              <img
-                loading="lazy"
-                ref={mainImageRef}
-                className="w-[45%] h-[40%] absolute top-[30%] left-[24%] object-cover"
-                src="/categories/heroimage.png"
-              />
-            </div>
-
-            <span
-              ref={maintext2Ref}
-              className="absolute bottom-14 right-0 text-black text-4xl sm:text-5xl font-dew-expanded-bold  w-[60%] md:w-[36%] xl:w-[28%]"
-            >
-              SHARE THE LIGHT.
-            </span>
-          </div>
-
-          <div
-            ref={categoryContainerRef}
-            className="w-1/2 ml-auto flex flex-col md:flex-row h-full"
-          >
-            <div
-              ref={categorySlide1}
-              className="flex-[0.8] h-full relative cursor-pointer bg-[#798E7B] flex items-center justify-center overflow-hidden"
-            >
-              <img
-                loading="lazy"
-                src={"/categories/hoodie.png"}
-                width={900}
-                height={1200}
-                className="w-full h-full  object-cover"
-              />
-              <Link
-                href={"/hoodies/slug1"}
-                ref={text1Ref}
-                className="absolute text-white text-2xl font-bold"
-              >
-                HOODIES
-              </Link>
-            </div>
-
-            <div
-              ref={categorySlide2}
-              className="bg-[#B692A1] flex-[0.2] cursor-pointer h-full relative flex items-center justify-center overflow-hidden"
-            >
-              <img
-                loading="lazy"
-                src={"/categories/handbag.png"}
-                className="w-full h-full object-cover"
-              />
-              <div
-                ref={text2Ref}
-                className="text-white text-xl absolute font-bold transform rotate-90 whitespace-nowrap"
-              >
-                HANDBAGS
-              </div>
-            </div>
-
-            <div
-              ref={categorySlide3}
-              className="bg-[#BFCCD8] flex-[0.1] cursor-pointer relative h-full flex items-center justify-center overflow-hidden"
-            >
-              <img
-                loading="lazy"
-                src={"/categories/action-figures.jpg"}
-                className="w-full h-full object-cover"
-              />
-
-              <div
-                ref={text3Ref}
-                className="text-white text-lg font-bold absolute transform rotate-90 whitespace-nowrap"
-              >
-                T-SHIRTS
-              </div>
-            </div>
-
-            <div
-              ref={categorySlide4}
-              className="bg-[#E8B4B8] flex-[0] cursor-pointer h-full relative flex items-center justify-center overflow-hidden"
-            >
-              <img
-                loading="lazy"
-                src={"/categories/action-figures.jpg"}
-                className="w-full h-full object-cover"
-              />
-
-              <div
-                ref={text4Ref}
-                className="text-white text-lg font-bold  absolute transform rotate-90 whitespace-nowrap"
-              >
-                ACESSORIES
-              </div>
-            </div>
-          </div>
+    <section
+      ref={rootRef}
+      className="relative w-full h-screen overflow-hidden bg-black text-white"
+    >
+      {/* INTRO PANEL */}
+      <div
+        ref={introRef}
+        className="absolute top-0 h-full bg-[#f2f2f2] text-black z-30 flex flex-col justify-between p-12 overflow-hidden border-r border-black/10"
+      >
+        <div className="flex gap-6 uppercase text-sm tracking-widest font-bold">
+          <span>.Browse</span>
+          <span>.Gallery</span>
+          <span>.Contact</span>
+          <span>.About</span>
+        </div>
+        <div>
+          <h1 className="text-8xl font-black mb-6 tracking-tighter">
+            ANUGRAHA
+          </h1>
+          <p className="max-w-md text-lg opacity-70 leading-relaxed font-medium">
+            Precision-driven web experiences inspired by motion, clarity, and
+            brutal simplicity.
+          </p>
+        </div>
+        <div className="uppercase text-xs font-bold tracking-widest opacity-40">
+          Est. 2024
         </div>
       </div>
-    </div>
-  );
-};
 
-export default LandingHero;
+      {/* CARD 1 (Project 1) */}
+      <div
+        ref={(el) => {
+          if (el) cardsRef.current[0] = el;
+        }}
+        className="absolute top-0 h-full overflow-hidden bg-[#fbbf24] z-20 will-change-[left,width]"
+      >
+        <div
+          className="inner-img absolute inset-0 w-[120%] h-full bg-cover bg-center -ml-[10%]"
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2560&auto=format&fit=crop)",
+          }}
+        ></div>
+        <div className="absolute bottom-12 left-12 content-wrapper">
+          <h2 className="text-6xl font-bold text-white mix-blend-difference">
+            PIKKO
+          </h2>
+        </div>
+        <div className="absolute inset-0 bg-black/10"></div>
+      </div>
+
+      {/* CARD 2 (Project 2 - Strip) */}
+      <div
+        ref={(el) => {
+          if (el) cardsRef.current[1] = el;
+        }}
+        className="absolute top-0 h-full overflow-hidden bg-[#d97706] z-10 will-change-[left,width] border-l border-white/20"
+      >
+        <div
+          className="inner-img absolute inset-0 w-[120%] h-full bg-cover bg-center -ml-[10%]"
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=2560&auto=format&fit=crop)",
+          }}
+        ></div>
+        <div className="absolute bottom-12 left-12 content-wrapper opacity-0">
+          <h2 className="text-6xl font-bold text-white mix-blend-difference">
+            UBAC
+          </h2>
+        </div>
+      </div>
+
+      {/* CARD 3 (Project 3 - Offscreen) */}
+      <div
+        ref={(el) => {
+          if (el) cardsRef.current[2] = el;
+        }}
+        className="absolute top-0 h-full overflow-hidden bg-[#92400e] z-0 will-change-[left,width] border-l border-white/20"
+      >
+        <div
+          className="inner-img absolute inset-0 w-[120%] h-full bg-cover bg-center -ml-[10%]"
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2560&auto=format&fit=crop)",
+          }}
+        ></div>
+        <div className="absolute bottom-12 left-12 content-wrapper opacity-0">
+          <h2 className="text-6xl font-bold text-white mix-blend-difference">
+            SANCTUARY
+          </h2>
+        </div>
+      </div>
+    </section>
+  );
+}
