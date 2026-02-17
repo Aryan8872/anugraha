@@ -56,11 +56,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${clashDisplay.variable} antialiased `}
+        className={`${geistSans.variable} ${clashDisplay.variable} antialiased flex flex-col min-h-screen`}
       >
         {/* <SmoothScrollProvider> */}
         <Navbar />
-        <main className="px-4 sm:px-12">{children}</main>
+        <main className="px-4 sm:px-12 flex-1">{children}</main>
         <Footer />
         {/* </SmoothScrollProvider> */}
       </body>

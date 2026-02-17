@@ -7,7 +7,7 @@ import Testimonials from "@/Components/Testimonials";
 import Image from "next/image";
 export default function Home() {
   return (
-    <main className=" bg-primary-bg">
+    <main className="">
       {/* <LandingHero
        /> */}
       <HeroSwiper />

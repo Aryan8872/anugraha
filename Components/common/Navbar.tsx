@@ -60,15 +60,13 @@ const Navbar = () => {
         </div>
 
         {navbarLinks.map((link, index) => (
-          <>
-            <Link
-              href={link.path}
-              key={index}
-              className="lg:block hidden font-clash-display  font-medium capitalize cursor-pointer hover:underline"
-            >
-              {link.label}
-            </Link>
-          </>
+          <Link
+            href={link.path}
+            key={index}
+            className="lg:block hidden font-clash-display  font-medium capitalize cursor-pointer hover:underline"
+          >
+            {link.label}
+          </Link>
         ))}
 
         <BiMenu
@@ -95,18 +93,16 @@ const Navbar = () => {
           />
           <div className="flex flex-col gap-5 w-full px-7 h-full justify-center items-start">
             {navbarLinks.map((link, index) => (
-              <>
-                <Link
-                  href={link.path}
-                  key={index}
-                  className="font-dew-semibold text-xl w-full cursor-pointer hover:underline"
-                  onClick={() => {
-                    ShowSideMenu(false);
-                  }}
-                >
-                  {link.label}
-                </Link>
-              </>
+              <Link
+                href={link.path}
+                key={index}
+                className="font-dew-semibold text-xl w-full cursor-pointer hover:underline"
+                onClick={() => {
+                  ShowSideMenu(false);
+                }}
+              >
+                {link.label}
+              </Link>
             ))}
           </div>
         </div>
