@@ -4,6 +4,7 @@ import { BsBag } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { CgClose } from "react-icons/cg";
 import Link from "next/link";
+import Image from "next/image";
 const Navbar = () => {
   const [showSideMenu, ShowSideMenu] = useState(false);
   const [showNavbar, SetShowNavbar] = useState(true);
@@ -49,25 +50,30 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`${showNavbar ? "translate-y-0" : "-translate-y-full"} sticky top-0 z-[90] transition-all duration-300 ease-in-out bg-white w-full flex justify-between py-6 px-8  items-center`}
+        className={`${showNavbar ? "translate-y-0" : "-translate-y-full"} sticky top-0 z-[90] transition-all duration-300 ease-in-out bg-white w-full flex justify-between py-3 px-8  items-center`}
       >
-        <div className="h-[50px] w-[100px] sm:w-[200px]">
-          <img
+        <div className="">
+          <Image
+            alt="anugraha logo"
+            height={50}
+            width={80}
             loading="lazy"
-            src={"/logo/anugraha.png"}
+            src={"/logo/anugraha2.png"}
             className="w-full h-full object-contain"
           />
         </div>
 
-        {navbarLinks.map((link, index) => (
-          <Link
-            href={link.path}
-            key={index}
-            className="lg:block hidden font-clash-display  font-medium capitalize cursor-pointer hover:underline"
-          >
-            {link.label}
-          </Link>
-        ))}
+        <div className="lg:flex hidden  flex-row gap-8">
+          {navbarLinks.map((link, index) => (
+            <Link
+              href={link.path}
+              key={index}
+              className=" font-clash-display font-medium text-sm  uppercase cursor-pointer hover:underline"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
 
         <BiMenu
           size={45}

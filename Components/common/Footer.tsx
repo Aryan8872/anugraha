@@ -1,100 +1,95 @@
+import React from "react";
 import { BiCopyright } from "react-icons/bi";
 
 const Footer = () => {
   return (
-    <div className="relative pl-5 sm:pl-10 xl:px-20 pt-16 py-20 bg-primary-bg w-full">
-      <div className="grid grid-cols-2 gap-y-10 lg:grid-cols-4 gap-x-6 w-ful mb-5">
-        <div className="flex flex-col gap-2 w-full col-span-2 lg:col-span-1 text-left ">
-          <img
-            loading="lazy"
-            src={"/logo/anugraha.png"}
-            className="h-20 w-44"
-          />
-          <span className="font-dew-bold leading-6 text-sm tracking-wider">
-            {" "}
-            Laxmipur,Kankai-01, Jhapa
-          </span>
-          <span className="font-dew-bold leading-6 text-sm tracking-wider">
-            joelghale@gmail.com
-          </span>
-        </div>
-        <div className="flex flex-col  gap-3 w-full text-left ">
-          <span className="font-dew-bold pointer-events-none">Menu</span>
-          <span className="cursor-pointer font-dew-semibold hover:text-black mt-3 text-black/65">
-            Home
-          </span>
-          <span className="cursor-pointer font-dew-semibold hover:text-black text-black/65">
-            About
-          </span>
-          <span className="cursor-pointer font-dew-semibold hover:text-black text-black/65">
-            Gallery
-          </span>
-          <span className="cursor-pointer font-dew-semibold hover:text-black text-black/65">
-            Contact
-          </span>
-        </div>
-        <div className="flex flex-col  gap-3 w-full text-left ">
-          <span className="font-dew-bold pointer-events-none">
-            Social Links
-          </span>
-          <span className="flex gap-3 items-center cursor-pointer font-dew-semibold hover:text-black mt-3 text-black/65">
-            Cart
-          </span>
-          <span className="flex gap-3 items-center cursor-pointer font-dew-semibold hover:text-black text-black/65">
-            Wishlist
-          </span>
-          <span className="flex gap-3 items-center cursor-pointer font-dew-semibold hover:text-black text-black/65">
-            Account
-          </span>
-          <span className="flex gap-3 items-center cursor-pointer font-dew-semibold hover:text-black text-black/65">
-            Privacy and policy
-          </span>
-        </div>
-        <div className="flex flex-col  gap-3 w-full text-left ">
-          <span className="font-dew-bold pointer-events-none">
-            Social Links
-          </span>
-          <span className="flex gap-3 items-center cursor-pointer font-dew-semibold hover:text-black mt-3 text-black/65">
-            <img
-              loading="lazy"
-              src={"/icons/facebook.webp"}
-              className="h-[20px] w-[20px]"
-            />
-            Instagram
-          </span>
-          <span className="flex gap-3 items-center cursor-pointer font-dew-semibold hover:text-black text-black/65">
-            <img
-              loading="lazy"
-              src={"/icons/facebook.webp"}
-              className="h-[20px] w-[20px]"
-            />
-            Facebook
-          </span>
-          <span className="flex gap-3 items-center cursor-pointer font-dew-semibold hover:text-black text-black/65">
-            <img
-              loading="lazy"
-              src={"/icons/x.webp"}
-              className="h-[20px] w-[20px]"
-            />
-            X
-          </span>
-          <span className="flex gap-3 items-center cursor-pointer font-dew-semibold hover:text-black text-black/65">
-            <img
-              loading="lazy"
-              src={"/icons/whatsapp.webp"}
-              className="h-[20px] w-[20px]"
-            />
-            Whatsapp
-          </span>
-        </div>
-      </div>
+    <footer className="w-full bg-zinc-900 text-white py-20 lg:py-32 px-6 sm:px-12 mt-auto overflow-hidden">
+      <div className="max-w-screen-2xl mx-auto flex flex-col gap-16 lg:gap-24">
+        {/* Massive Logomark Background */}
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 w-full border-b border-white/10 pb-16 lg:pb-24">
+          <div className="w-full md:w-1/3 flex flex-col gap-8">
+            <h2 className="font-clash-display text-4xl sm:text-5xl uppercase font-medium tracking-widest text-white">
+              Anugraha
+            </h2>
+            <div className="flex flex-col gap-2">
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-light text-zinc-400">
+                Laxmipur, Kankai-01, Jhapa
+              </span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-light text-zinc-400 hover:text-white transition-colors cursor-pointer">
+                joelghale@gmail.com
+              </span>
+            </div>
+          </div>
 
-      <div className="absolute flex justify-center bottom-0 py-3 left-0 mt-10 sm:left-[10%] md:left-[20%] w-full  sm:w-[80%]   md:w-[60%] mx-auto rounded-t-full bg-white shadow-md ">
-        <span className="flex gap-2 font-dew-semibold text-black/45  text-sm items-center">
-          Copyright <BiCopyright /> Anugraha. All Rights Reserved.
-        </span>
+          <div className="w-full md:w-2/3 grid grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="flex flex-col gap-6">
+              <span className="text-[10px] uppercase font-bold tracking-[0.4em] text-zinc-600 mb-2">
+                Menu
+              </span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-light hover:text-zinc-400 transition-colors cursor-pointer w-fit">
+                Home
+              </span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-light hover:text-zinc-400 transition-colors cursor-pointer w-fit">
+                About
+              </span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-light hover:text-zinc-400 transition-colors cursor-pointer w-fit">
+                Gallery
+              </span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-light hover:text-zinc-400 transition-colors cursor-pointer w-fit">
+                Contact
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-6">
+              <span className="text-[10px] uppercase font-bold tracking-[0.4em] text-zinc-600 mb-2">
+                Support
+              </span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-light hover:text-zinc-400 transition-colors cursor-pointer w-fit">
+                Cart
+              </span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-light hover:text-zinc-400 transition-colors cursor-pointer w-fit">
+                Wishlist
+              </span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-light hover:text-zinc-400 transition-colors cursor-pointer w-fit">
+                Account
+              </span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-light hover:text-zinc-400 transition-colors cursor-pointer w-fit">
+                Privacy Policy
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-6">
+              <span className="text-[10px] uppercase font-bold tracking-[0.4em] text-zinc-600 mb-2">
+                Social
+              </span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-light hover:text-zinc-400 transition-colors cursor-pointer w-fit flex items-center gap-2">
+                Instagram
+              </span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-light hover:text-zinc-400 transition-colors cursor-pointer w-fit flex items-center gap-2">
+                Facebook
+              </span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-light hover:text-zinc-400 transition-colors cursor-pointer w-fit flex items-center gap-2">
+                X
+              </span>
+              <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-light hover:text-zinc-400 transition-colors cursor-pointer w-fit flex items-center gap-2">
+                Whatsapp
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Banner */}
+        <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-6 w-full">
+          <span className="flex gap-2 text-zinc-500 font-light text-[10px] sm:text-xs uppercase tracking-[0.2em] items-center">
+            Anugraha <BiCopyright className="text-sm" />{" "}
+            {new Date().getFullYear()} All Rights Reserved.
+          </span>
+          <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-bold text-white/50">
+            Silence In Motion
+          </span>
+        </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
