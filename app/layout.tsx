@@ -60,7 +60,7 @@ export default function RootLayout({
       >
         {/* <SmoothScrollProvider> */}
         <Navbar />
-        <main className="px-4 sm:px-12 flex-1">{children}</main>
+        <main className="px-4 sm:px-8 flex-1">{children}</main>
         <Footer />
         {/* </SmoothScrollProvider> */}
       </body>

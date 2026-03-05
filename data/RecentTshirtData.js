@@ -41,4 +41,34 @@ export const recentData = [
     price: "$999",
     image: "/tshirts/tshirt5.png",
   },
+
+  {
+    name: "Graphity print",
+    price: "$999",
+    image: "/tshirts/tshirt5.png",
+  },
+
+  {
+    name: "Graphity print",
+    price: "$999",
+    image: "/tshirts/tshirt5.png",
+  },
+
+  {
+    name: "Graphity print",
+    price: "$999",
+    image: "/tshirts/tshirt5.png",
+  },
+
+  {
+    name: "Graphity print",
+    price: "$999",
+    image: "/tshirts/tshirt5.png",
+  },
+
+  {
+    name: "Graphity print",
+    price: "$999",
+    image: "/tshirts/tshirt5.png",
+  },
 ];
