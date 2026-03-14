@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import Link from "next/link";
 import { recentData } from "@/data/RecentTshirtData";
 import ProductCard from "../common/ProductCard";
-import { useRevealText } from "@/hooks/useRevealText";
 
 // Swiper imports
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,26 +14,19 @@ import "swiper/css/pagination";
 
 export default function NewArrivals() {
   const displayArrivals = recentData.slice(0, 4);
-  const headingRef = useRef<HTMLDivElement>(null);
-  useRevealText(headingRef as React.RefObject<HTMLElement>, {
-    start: "top 88%",
-  });
 
   return (
     <section className="w-full">
       {/* Header */}
-      <div
-        ref={headingRef}
-        className="flex justify-between items-center mb-8 md:mb-12 border-b border-zinc-100 pb-4"
-      >
-        <div className="overflow-hidden">
-          <h2 className="reveal-line text-4xl md:text-5xl lg:text-6xl uppercase font-medium text-green-primary">
+      <div className="flex justify-between items-center mb-8 md:mb-12 border-b border-zinc-100 pb-4">
+        <div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase font-medium text-green-primary">
             NEW ARRIVALS
           </h2>
         </div>
         <Link
           href="/collections"
-          className="reveal-line border border-text-black text-text-black px-4 py-2.5 md:px-6 md:py-3 text-[9px] md:text-xs font-medium uppercase tracking-[0.1em] hover:bg-text-black hover:text-green-primary transition-all duration-300 cursor-pointer"
+          className="border border-text-black text-text-black px-4 py-2.5 md:px-6 md:py-3 text-[9px] md:text-xs font-medium uppercase tracking-[0.1em] hover:bg-text-black hover:text-green-primary transition-all duration-300 cursor-pointer"
         >
           VIEW ALL
         </Link>

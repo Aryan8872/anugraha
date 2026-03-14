@@ -83,7 +83,7 @@ export default function Testimonials() {
       <div className="max-w-screen-2xl mx-auto">
         {/* ── Header ─────────────────────────────────────────────────────── */}
         <div className="mb-16 border-b border-zinc-100 pb-4">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl uppercase font-medium text-green-primary">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase font-medium text-green-primary">
             What They Say
           </h2>
         </div>

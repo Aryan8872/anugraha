@@ -49,23 +49,6 @@ export default function CategoriesSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      /* ── Heading: words slide up from clip ─────────────────── */
-      const words = headingRef.current?.querySelectorAll(".word");
-      if (words && words.length > 0) {
-        gsap.from(words, {
-          scrollTrigger: {
-            trigger: headingRef.current,
-            start: "top 88%",
-            toggleActions: "play none none none",
-          },
-          y: "105%",
-          opacity: 0,
-          stagger: 0.1,
-          ease: "power4.out",
-          duration: 0.9,
-        });
-      }
-
       /* ── Cards: clip-path reveal from bottom ──────────────── */
       cardsRef.current.forEach((card, i) => {
         if (!card) return;
@@ -122,7 +105,7 @@ export default function CategoriesSection() {
           ref={headingRef}
           className="mb-16 border-b border-zinc-100 pb-4 overflow-hidden"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl uppercase font-medium text-green-primary">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase font-medium text-green-primary">
             <span className="word inline-block mr-3">Shop By</span>
             <span className="word inline-block">Category</span>
           </h2>

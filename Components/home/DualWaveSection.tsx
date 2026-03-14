@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -12,21 +13,25 @@ const LEFT_ITEMS = [
     label: "Essentials",
     image:
       "https://images.unsplash.com/photo-1591047139829-d91aecb6cae4?q=80&w=700&auto=format&fit=crop",
+    slug: "essentials",
   },
   {
     label: "Limited",
     image:
       "https://images.unsplash.com/photo-1559551409-dadc959f76b8?q=80&w=700&auto=format&fit=crop",
+    slug: "limited",
   },
   {
     label: "Drops",
     image:
       "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=700&auto=format&fit=crop",
+    slug: "drops",
   },
   {
     label: "Anugraha",
     image:
       "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=700&auto=format&fit=crop",
+    slug: "anugraha",
   },
 ];
 
@@ -44,10 +49,12 @@ export default function DualWaveSection() {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const leftColRef = useRef<HTMLDivElement>(null);
   const rightColRef = useRef<HTMLDivElement>(null);
-  const thumbRef = useRef<HTMLDivElement>(null);
+  const thumbRef = useRef<HTMLAnchorElement>(null); // Now points to <Link> inside Next wrapper
   const imgARef = useRef<HTMLImageElement>(null);
   const imgBRef = useRef<HTMLImageElement>(null);
   const labelRef = useRef<HTMLSpanElement>(null);
+
+  const [activeSlug, setActiveSlug] = useState(LEFT_DATA[0].slug);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -138,6 +145,9 @@ export default function DualWaveSection() {
         el.dataset.focused = i === focused ? "true" : "false";
       });
 
+      // Track active slug for the link
+      setActiveSlug(LEFT_DATA[focused].slug);
+
       // ── Thumb Y: align centre of thumb to centre of focused row ──
       if (thumb) {
         const wRect = wrapper.getBoundingClientRect();
@@ -184,11 +194,11 @@ export default function DualWaveSection() {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-white"
+      className="w-full min-h-screen bg-white flex flex-col px-4 sm:px-8 md:px-12 py-8 md:py-12"
     >
       {/* Label — same heading size as New Arrivals / Best Sellers */}
-      <div className="max-w-screen-2xl mx-auto mb-6 md:mb-8 border-b border-zinc-100 pb-4">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl uppercase font-medium text-green-primary">
+      <div className="max-w-screen-2xl w-full mx-auto mb-4 md:mb-6 border-b border-zinc-100 pb-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase font-medium text-green-primary">
           The Collection
         </h2>
       </div>
@@ -201,20 +211,23 @@ export default function DualWaveSection() {
       */}
       <div
         ref={wrapperRef}
-        className="max-w-screen-2xl mx-auto w-full"
+        className="max-w-screen-2xl mx-auto w-full flex-1"
         style={{
           display: "grid",
           // Centre column: tight on mobile, proportional on desktop
           gridTemplateColumns: "1fr clamp(80px, 12vw, 210px) 1fr",
           overflow: "hidden",
           position: "relative",
+          // Row height distributes evenly to fill the available space
+          gridAutoRows: "1fr",
+          alignContent: "stretch",
         }}
         aria-hidden="true"
       >
         {/* ── Left column ──────────────────────────────────────────── */}
         <div
           ref={leftColRef}
-          className="flex flex-col gap-1 sm:gap-1.5 md:gap-2 lg:gap-3 z-10"
+          className="flex flex-col justify-between h-full gap-1 z-10"
           style={{ overflow: "hidden", minWidth: 0 }}
         >
           {LEFT_DATA.map((item, i) => (
@@ -224,7 +237,7 @@ export default function DualWaveSection() {
                          font-bold uppercase leading-[0.95] tracking-tight
                          text-zinc-200 transition-colors duration-200
                          data-[focused=true]:text-zinc-900"
-              style={{ fontSize: "clamp(0.7rem, 2.6vw, 3.4rem)" }}
+              style={{ fontSize: "clamp(1.15rem, 3.5vw, 3.4rem)" }}
             >
               {item.label}
             </div>
@@ -237,9 +250,10 @@ export default function DualWaveSection() {
           The column is always visible on every screen size.
         */}
         <div className="relative" style={{ overflow: "visible" }}>
-          <div
+          <Link
+            href={`/collections/${activeSlug}`}
             ref={thumbRef}
-            className="shadow-2xl overflow-hidden"
+            className="shadow-2xl overflow-hidden block cursor-pointer transition-transform hover:scale-105 duration-300"
             style={{
               position: "absolute",
               top: 0,
@@ -249,6 +263,7 @@ export default function DualWaveSection() {
               aspectRatio: "3/4",
               width: "clamp(78px, 11vw, 200px)",
             }}
+            aria-label={`View ${activeSlug} collection`}
           >
             <img
               ref={imgARef}
@@ -272,13 +287,13 @@ export default function DualWaveSection() {
                 style={{ fontSize: "clamp(7px, 0.9vw, 10px)" }}
               />
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* ── Right column ─────────────────────────────────────────── */}
         <div
           ref={rightColRef}
-          className="flex flex-col items-end gap-1 sm:gap-1.5 md:gap-2 lg:gap-3 z-10"
+          className="flex flex-col items-end justify-between h-full gap-1 z-10"
           style={{ overflow: "hidden", minWidth: 0 }}
         >
           {RIGHT_DATA.map((item, i) => (
@@ -288,7 +303,7 @@ export default function DualWaveSection() {
                          font-bold uppercase leading-[0.95] tracking-tight
                          text-zinc-200 transition-colors duration-200
                          data-[focused=true]:text-zinc-900"
-              style={{ fontSize: "clamp(0.7rem, 2.6vw, 3.4rem)" }}
+              style={{ fontSize: "clamp(1.15rem, 3.5vw, 3.4rem)" }}
             >
               {item}
             </div>

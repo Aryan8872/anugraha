@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import ProductCard from "../common/ProductCard";
-import { useRevealText } from "@/hooks/useRevealText";
 
 // Swiper imports
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -39,24 +38,16 @@ const bestSellers = [
 ];
 
 export default function BestSellers() {
-  const headingRef = useRef<HTMLDivElement>(null);
-  useRevealText(headingRef as React.RefObject<HTMLElement>, {
-    start: "top 88%",
-  });
-
   return (
     <section className="w-full">
       {/* Header */}
-      <div
-        ref={headingRef}
-        className="flex justify-between items-center mb-8 md:mb-12 border-b border-zinc-100 pb-4 overflow-hidden"
-      >
-        <div className="overflow-hidden">
-          <h2 className="reveal-line text-4xl md:text-5xl lg:text-6xl uppercase font-medium text-green-primary">
+      <div className="flex justify-between items-center mb-8 md:mb-12 border-b border-zinc-100 pb-4">
+        <div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase font-medium text-green-primary">
             BESTSELLERS
           </h2>
         </div>
-        <button className="reveal-line border border-text-black text-text-black px-4 py-2.5 md:px-6 md:py-3 text-[9px] md:text-xs font-medium uppercase tracking-[0.1em] hover:bg-text-black hover:text-green-primary transition-all duration-300 cursor-pointer">
+        <button className="border border-text-black text-text-black px-4 py-2.5 md:px-6 md:py-3 text-[9px] md:text-xs font-medium uppercase tracking-[0.1em] hover:bg-text-black hover:text-green-primary transition-all duration-300 cursor-pointer">
           VIEW ALL
         </button>
       </div>
